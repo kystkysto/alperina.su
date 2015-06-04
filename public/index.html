@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru" data-ng-app="Alperina">
+	<head>
+
+		<meta charset="utf-8">
+		<base href="http://54.148.156.67:3000/">
+		<!-- disable zooming -->
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- for Google -->
+		<meta name="Robots" content="NOINDEX, NOFOLLOW">
+
+		<meta name="description" content="{{meta.description}}">
+		<meta name="keywords" content="{{meta.keywords}}">
+		<meta name="author" content="">
+		<meta name="copyright" content="alperina.su">
+		<meta name="application-name" content="alperina.su">
+
+		<!-- for Facebook -->
+		<meta property="og:title" content="{{meta.ogTitle}}">
+		<meta property="og:type" content="{{meta.ogType}}">
+		<meta property="og:image" content="{{meta.ogImage}}">
+		<meta property="og:url" content="{{meta.ogUrl}}">
+		<meta property="og:description" content="{{meta.ogDescription}}">
+
+		<!-- for Twitter -->
+		<meta name="twitter:card" content="{{meta.twitterCard}}">
+		<meta name="twitter:title" content="{{meta.twitterTitle}}">
+		<meta name="twitter:description" content="{{meta.twitterDescription}}">
+		<meta name="twitter:image" content="{{meta.twitterImg}}">
+
+		<title>{{meta.title}}</title>
+
+		<link rel="stylesheet" href="css/app.css">
+
+	</head>
+	<body>
+
+	<!-- Content -->
+		<div class="container">
+			<div class="row">
+				<div class="flag"><a data-ng-href="/"><h1>alperina.su</h1></a></div>
+				<aside class="menu">
+					<div class="menu-wrapper">
+						<div class="avatar-wrapper">
+							<figure class="avatar">
+								<a href="/"><img class="avatar-img" src="img/avatar.jpg"></a>
+							</figure>
+						</div>
+						<nav data-ng-controller="MenuController as menu">
+							<ul class="nav nav-stacked">
+								<li>
+									<a data-ng-click="menu.expandSubMenu('articles');">Статьи</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.articles, 'collapsed' : !menu.items.articles}">
+										<li><a data-ng-class="{ active: menu.selectedItem('articles/persons') }" data-ng-href="/articles/persons/">Персоны</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/articles/reviews') }" data-ng-href="/articles/reviews/">Рецензии</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/articles/travel') }" data-ng-href="/articles/travel/">Путешествия</a></li>
+									</ul>
+								</li>
+								<li>
+									<a data-ng-click="menu.expandSubMenu('club');">Клуб одесситов</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.club, 'collapsed' : !menu.items.club}">
+										<li><a data-ng-class="{ active: menu.selectedItem('/club/news') }" data-ng-href="/club/news/">Новости</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/club/photos') }" data-ng-href="/club/photos/">Фото</a></li>
+									</ul>
+								</li>
+								<li>
+									<a data-ng-click="menu.expandSubMenu('san');">САНиздат</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.san, 'collapsed' : !menu.items.san}">
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/poetry') }" data-ng-href="/san/poetry/">Стихи</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/songs') }" data-ng-href="/san/songs/">Песни</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/stories') }" data-ng-href="/san/stories/">Рассказы</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/thoughts') }" data-ng-href="/san/thoughts/">Мысли</a></li>
+									</ul>
+								</li>
+								<li>
+									<a data-ng-click="menu.expandSubMenu('scince');">Научная работа</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.scince, 'collapsed' : !menu.items.scince}">
+										<li><a data-ng-class="{ active: menu.selectedItem('/scince/synopsis') }" data-ng-href="/scince/synopsis/">Автореферат</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/scince/thesis') }" data-ng-href="/scince/thesis/">Диссертация</a></li>
+									</ul>
+								</li>
+								<li>
+									<a data-ng-click="menu.expandSubMenu('photos');">Фотографии</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.photos, 'collapsed' : !menu.items.photos}">
+										<li><a data-ng-class="{ active: menu.selectedItem('/photos/self') }" data-ng-href="/photos/self/">САНолюбование</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/photos/other') }" data-ng-href="/photos/other/">САН техника</a></li>
+									</ul>
+								</li>
+								<li>	
+									<a data-ng-click="menu.expandSubMenu('videos');">Видео</a>
+									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.videos, 'collapsed' : !menu.items.videos}">
+										<li><a data-ng-class="{ active: menu.selectedItem('/videos/self') }" data-ng-href="/videos/self/">САНолюбование</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/videos/other') }" data-ng-href="/videos/other/">КлипС.А.</a></li>
+									</ul>
+								</li>
+								<li><a data-ng-click="menu.expandSubMenu('none');" data-ng-class="{ active: menu.selectedItem('/feedback') }" data-ng-href="/feedback">Обратная связь</a></li>
+							</ul>
+						</nav>
+						<div class="push"></div>
+					</div>
+					<div class="share">
+						<a href="/" class="icon facebook" target="_blank"></a>
+						<a href="#" class="icon twitter" target="_blank"></a>
+						<a href="#" class="icon linkedin" target="_blank"></a>
+						<a href="#" class="icon livejournal" target="_blank"></a>
+						<a href="#" class="icon wikipedia" target="_blank"></a>
+						<a href="#" class="icon instagram" target="_blank"></a>
+					</div>
+					<div class="rights"><span>© 2015 alperina.su</span></div>
+				</aside> 
+				<main class="col-md-9 col-md-offset-3 main">
+					<header class="row header" data-ng-controller="HeaderContrller as Header">
+						<div class="col-xs-10 col-xs-offset-1">
+							<div class="quot" data-ng-if="Header.quote">
+								<h1>{{Header.quote}}</h1>								
+							</div>
+							<div class="title" data-ng-if="Header.title">
+								<h1>{{Header.title}}</h1>
+							</div>
+							<div class="tags-wrapper" data-ng-if="Header.showTags">
+								<span class="label">тэги:</span>
+								<div class="tags">
+									<a data-ng-href="/articles/persons?tag={{tag.name}}" class="tag" data-ng-repeat="tag in Header.tags"><span>{{tag.alias}}</span></a>
+								</div>
+							</div>
+						</div>
+					</header>
+					<section class="row content">
+						<data-ng-view></data-ng-view>
+					</section>	
+				</main>
+			</div>
+		</div>
+
+		<!-- JS scripts -->
+	    <script src="js/lib.js"></script>
+	    <script src="js/app.js"></script>
+  </body>
+</html>
