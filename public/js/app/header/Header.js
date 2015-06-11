@@ -50,6 +50,7 @@
 
 
 		self.setTitle = setTitle;
+		self.setQuote = setQuote;
 		self.setShowTags = setShowTags;
 		self.setTags = setTags;
 		self.registerObserverCallback = registerObserverCallback;
@@ -57,6 +58,14 @@
 
 		function setTitle(title) {
 			self.title = title;
+			self.quote = null;
+			return self.notifyObservers();
+		}
+
+		function setQuote(quote) {
+			self.quote = quote;
+			self.title = null;
+			console.log(self.quote);
 			return self.notifyObservers();
 		}
 

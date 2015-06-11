@@ -15,8 +15,8 @@
 				'/articles/persons': 'Персоны',
 				'/articles/reviews': 'Рецензии',
 				'/articles/travel': 'Путешествия',
-				'/club/news': 'Новости',
-				'/club/photos': 'Фото',
+				'/club/news': 'Клуб одесситов - Новости',
+				'/club/photos': 'Клуб одесситов - Фото',
 				'/san/poetry': 'Стихи',
 				'/san/songs': 'Песни',
 				'/san/stories': 'Рассказы',
@@ -24,10 +24,10 @@
 				'/scince/synopsis': 'Автореферат',
 				'/san/thoughts': 'Мысли',
 				'/scince/thesis': 'Диссертация',
-				'/photos/self': 'Фото.САНолюбование',
-				'/photos/other': 'САН техника',
-				'/videos/self': 'Видео.САНолюбование',
-				'/videos/other': 'Видео.КлипС.А.',
+				'/photos/self': 'Фото - САНолюбование',
+				'/photos/other': 'Фото - САН техника',
+				'/videos/self': 'Видео - САНолюбование',
+				'/videos/other': 'Видео - КлипС.А.',
 				'/feedback': 'Обратная связь'
 			};
 

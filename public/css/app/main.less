@@ -36,8 +36,16 @@
 @darker: darken(@darkblue, 10%);
 
 
-body, html {
+body, html, .container, .container > .row {
 	height: 100%;
+}
+
+.main {
+	min-height: 100%;
+}
+
+form {
+	font-family: R;
 }
 
 .shadow-1 {
@@ -116,6 +124,39 @@ h1, h2, h3, h4, h5 {
 		border-top: 1px solid #264a70;
 		border-bottom: 1px solid #264a70;
 	}
+}
+
+header {
+	overflow: hidden;
+}
+
+.pull-front {
+	z-index: 1;
+}
+
+.quote h1:before, .quote h1:after {
+    content: '';
+    position: absolute;
+    background: url(/img/quotes.png);
+    width: 221px;
+    height: 94px;
+    z-index: -1;
+}
+
+.quote h1:before {
+	left: 29px;
+    top: 30px;
+}
+.quote h1:after {
+    background-position: -221px 0;
+    right: -106px;
+    bottom: -36px;
+}
+
+.quote h1 {
+	text-align: right;
+	color: #fff;
+	font-family: SI;
 }
 
 nav > .nav:after {

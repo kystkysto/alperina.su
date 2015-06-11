@@ -12,6 +12,9 @@
 				updateTitle: function() {
 					self.title = Header.title;
 				},
+				updatequote: function() {
+					self.quote = Header.quote;
+				},
 				updateShowTags: function() {
 					self.showTags = Header.showTags;
 				},

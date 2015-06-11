@@ -43,8 +43,14 @@
 
 			san: {
 				templateUrl: 'tmpl/san.html',
-				controller: 'MaterialController',
-				controllerAs: 'Material'
+/*				controller: 'MaterialController',
+				controllerAs: 'Material'*/
+			},
+			
+			scince: {
+				templateUrl: 'tmpl/san.html',
+/*				controller: 'MaterialController',
+				controllerAs: 'Material'*/
 			},
 
 			photos: {
@@ -74,7 +80,7 @@
 			.when('/club/news', routes.materials)
 			.when('/club/photos', routes.photos)
 			.when('/san/:type', routes.san)
-			.when('/scince/:type', routes.material)
+			.when('/scince/:type', routes.scince)
 			.when('/photos/:type', routes.photos)
 			.when('/videos/:type', routes.videos)
 			.when('/feedback', routes.feedback)

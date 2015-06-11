@@ -5,7 +5,7 @@ angular.module('Alperina.controllers')
 
 function HomeController($rootScope, Header) {
 
-	Header.setQuote = '';
+	Header.setQuote('Чуть – чуть литературы,<br/>И музыки немного,<br/>И чертова натура,<br/>И лирика – от Бога');
 
 	var self = this;
 }
