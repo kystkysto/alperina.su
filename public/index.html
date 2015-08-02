@@ -34,14 +34,15 @@
 		<link rel="stylesheet" href="css/app.css">
 
 	</head>
-	<body>
+	<body data-ng-controller="BodyController as body">
 
 	<!-- Content -->
 		<div class="container">
 			<div class="row">
 				<div class="flag"><a data-ng-href="/"><h1>alperina.su</h1></a></div>
-				<aside class="menu">
+				<aside class="menu" ng-style="body.showMenu">
 					<div class="menu-wrapper">
+						<div class="close-menu" data-ng-click="body.showMenu = {left: '-242.5px'}"></div>
 						<div class="avatar-wrapper">
 							<figure class="avatar">
 								<a href="/"><img class="avatar-img" src="img/avatar.jpg"></a>
@@ -110,10 +111,14 @@
 					<div class="rights"><span>© 2015 alperina.su</span></div>
 				</aside> 
 				<main class="col-md-9 col-md-offset-3 main">
+					<div class="hamburger" data-ng-click="body.showMenu = {left: 0}">
+
+					</div>
 					<header class="row header" data-ng-controller="HeaderContrller as Header">
 						<div class="col-xs-10 col-xs-offset-1 pull-front">
+
 							<div class="quote" data-ng-if="Header.quote">
-								<h1 data-ng-bind-html="Header.quote"></h1>								
+								<h2 data-ng-bind-html="Header.quote"></h2>								
 							</div>
 							<div class="title" data-ng-if="Header.title">
 								<h1>{{Header.title}}</h1>

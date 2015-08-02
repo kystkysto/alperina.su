@@ -19,10 +19,6 @@
     src: url('fonts/PT_Sans/PT_Sans-Web-Bold.ttf');
 }
 
-body {
-	font-size: 20px !important;
-}
-
 #grid {
     .core  {
         .span(@gridColumns) {
@@ -138,7 +134,7 @@ header {
 	z-index: 1;
 }
 
-.quote h1:before, .quote h1:after {
+.quote h2:before, .quote h2:after {
     content: '';
     position: absolute;
     background: url(/img/quotes.png);
@@ -147,17 +143,17 @@ header {
     z-index: -1;
 }
 
-.quote h1:before {
+.quote h2:before {
 	left: 29px;
     top: 30px;
 }
-.quote h1:after {
+.quote h2:after {
     background-position: -221px 0;
     right: -106px;
     bottom: -36px;
 }
 
-.quote h1 {
+.quote h2 {
 	text-align: right;
 	color: #fff;
 	font-family: SI;
@@ -190,7 +186,7 @@ nav > .nav:after {
 	bottom: 0;
 	height: 100%;
 	position:fixed;
-	z-index: 1;
+	z-index: 2;
 	background-color: @blue;
 	box-sizing: border-box;
 	-webkit-transition: left 1s; /* Safari 3.1 to 6.0 */
@@ -221,8 +217,36 @@ nav > .nav:after {
 
 .header {
 	min-height: 131px;
-	background-color: @teal;
+	background: linear-gradient(hsla(168, 100%, 41%, 0.6),hsla(168, 100%, 41%, 0.6)), url(/img/sea.jpg) 0 -500px;
 	padding: 20px 0;
+	overflow: hidden;
+}
+
+.hamburger ,
+.close-menu {
+	display: none;
+}
+
+.hamburger {
+    background: url(/img/hamburger.png) 0 0 no-repeat;
+    background-size: 100%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+}
+.close-menu {
+	background: url(/img/menu-icon-close.png) no-repeat;
+    background-size: 100%;
+    width: 25px;
+    height: 40px;
+    position: relative;
+    right: -205px;
+    top: 7px;
+    z-index: 3;
+    cursor: pointer;
 }
 
 .title h1 {
@@ -493,7 +517,7 @@ nav > .nav:after {
     	margin-bottom: 20px;
 	}
 
-	.quote h1 {
+	.quote h2 {
 		font-size: 18px;
 	}
 
@@ -507,18 +531,18 @@ nav > .nav:after {
 		font-size: 16px!important;
 	}
 
-	.quote h1:after, .quote h1:before {
+	.quote h2:after, .quote h2:before {
 	    width: 87px;
 	    height: 34px;
 	    background-size: 178px;
 	}
 
-	.quote h1:before {
+	.quote h2:before {
 	    left: -10px;
-	    top: 0px;
+	    top: 24px;
 	}
 
-	.quote h1:after {
+	.quote h2:after {
 	    background-position: -269px 0;
 	    right: -35px;
 	    bottom: -4px;
@@ -540,9 +564,16 @@ nav > .nav:after {
 @media (max-width: 991px) {
 	.menu {
    		left: -242.500px;
-   		z-index: 1;
+   		z-index: 2;
    		width: 242.500px;
   	}
+  	.hamburger ,
+	.close-menu {
+		display: block;
+	}
+	.avatar-wrapper {
+		display: none;
+	}
 }
 
 @media (min-width: 992px) {
