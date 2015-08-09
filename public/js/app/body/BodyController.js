@@ -7,29 +7,34 @@ function BodyController() {
 
     var left = true;
 
-    this.expand = function expand(){
-        
-        console.log(left);
+    this.position = {left:'-242.5px'};
 
+    this.expand = function expand(){
         
         if(left) {
 
             left = false;
-            return {left:'-242.5px'};
+            this.position = {left:'0'};
 
         } else {
 
             left = true;
-            return {};
+            this.position = {left:'-242.5px'};
         }
 
     };
 
     this.showMenu = function showMenu() {
 
+            this.expand();
+    };
+
+    this.getPosition = function getPosition() {
+
         if(window.matchMedia("(max-width: 991px) ").matches) {
-            
-            return this.expand();
+            return this.position;
+        } else {
+            return {};
         }
     };
 
