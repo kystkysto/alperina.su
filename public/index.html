@@ -39,10 +39,10 @@
 	<!-- Content -->
 		<div class="container">
 			<div class="row">
-				<div class="flag"><a data-ng-href="/"><h1>alperina.su</h1></a></div>
-				<aside class="menu" ng-style="body.showMenu">
+				<!--<div class="flag"><a data-ng-href="/"><h1>alperina.su</h1></a></div>-->
+				<aside class="menu" ng-style="body.showMenu()">
 					<div class="menu-wrapper">
-						<div class="close-menu" data-ng-click="body.showMenu = {left: '-242.5px'}"></div>
+						<div class="close-menu" data-ng-click="body.showMenu()"></div>
 						<div class="avatar-wrapper">
 							<figure class="avatar">
 								<a href="/"><img class="avatar-img" src="img/avatar.jpg"></a>
@@ -53,49 +53,49 @@
 								<li>
 									<a data-ng-click="menu.expandSubMenu('articles');">Статьи</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.articles, 'collapsed' : !menu.items.articles}">
-										<li><a data-ng-class="{ active: menu.selectedItem('articles/persons') }" data-ng-href="/articles/persons/" data-ng-click="body.showMenu = {left: '-242.5px'}">Персоны</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/articles/reviews') }" data-ng-href="/articles/reviews/" data-ng-click="body.showMenu = {left: '-242.5px'}">Рецензии</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/articles/travel') }" data-ng-href="/articles/travel/" data-ng-click="body.showMenu = {left: '-242.5px'}">Путешествия</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('articles/persons') }" data-ng-href="/articles/persons/" data-ng-click="body.showMenu()">Персоны</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/articles/reviews') }" data-ng-href="/articles/reviews/" data-ng-click="body.showMenu()">Рецензии</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/articles/travel') }" data-ng-href="/articles/travel/" data-ng-click="body.showMenu()">Путешествия</a></li>
 									</ul>
 								</li>
 								<li>
 									<a data-ng-click="menu.expandSubMenu('club');">Клуб одесситов</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.club, 'collapsed' : !menu.items.club}">
-										<li><a data-ng-class="{ active: menu.selectedItem('/club/news') }" data-ng-href="/club/news/" data-ng-click="body.showMenu = {left: '-242.5px'}">Новости</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/club/photos') }" data-ng-href="/club/photos/" data-ng-click="body.showMenu = {left: '-242.5px'}">Фото</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/club/news') }" data-ng-href="/club/news/" data-ng-click="body.showMenu()">Новости</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/club/photos') }" data-ng-href="/club/photos/" data-ng-click="body.showMenu()">Фото</a></li>
 									</ul>
 								</li>
 								<li>
 									<a data-ng-click="menu.expandSubMenu('san');">САНиздат</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.san, 'collapsed' : !menu.items.san}">
-										<li><a data-ng-class="{ active: menu.selectedItem('/san/poetry') }" data-ng-href="/san/poetry/" data-ng-click="body.showMenu = {left: '-242.5px'}">Стихи</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/san/songs') }" data-ng-href="/san/songs/" data-ng-click="body.showMenu = {left: '-242.5px'}">Песни</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/san/stories') }" data-ng-href="/san/stories/" data-ng-click="body.showMenu = {left: '-242.5px'}">Рассказы</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/san/thoughts') }" data-ng-href="/san/thoughts/" data-ng-click="body.showMenu = {left: '-242.5px'}">Мысли</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/poetry') }" data-ng-href="/san/poetry/" data-ng-click="body.showMenu()">Стихи</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/songs') }" data-ng-href="/san/songs/" data-ng-click="body.showMenu()">Песни</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/stories') }" data-ng-href="/san/stories/" data-ng-click="body.showMenu()">Рассказы</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/san/thoughts') }" data-ng-href="/san/thoughts/" data-ng-click="body.showMenu()">Мысли</a></li>
 									</ul>
 								</li>
 								<li>
 									<a data-ng-click="menu.expandSubMenu('scince');">Научная работа</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.scince, 'collapsed' : !menu.items.scince}">
-										<li><a data-ng-class="{ active: menu.selectedItem('/scince/synopsis') }" data-ng-href="/scince/synopsis/" data-ng-click="body.showMenu = {left: '-242.5px'}">Автореферат</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/scince/thesis') }" data-ng-href="/scince/thesis/" data-ng-click="body.showMenu = {left: '-242.5px'}">Диссертация</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/scince/synopsis') }" data-ng-href="/scince/synopsis/" data-ng-click="body.showMenu()">Автореферат</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/scince/thesis') }" data-ng-href="/scince/thesis/" data-ng-click="body.showMenu()">Диссертация</a></li>
 									</ul>
 								</li>
 								<li>
 									<a data-ng-click="menu.expandSubMenu('photos');">Фотографии</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.photos, 'collapsed' : !menu.items.photos}">
-										<li><a data-ng-class="{ active: menu.selectedItem('/photos/self') }" data-ng-href="/photos/self/" data-ng-click="body.showMenu = {left: '-242.5px'}">САНолюбование</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/photos/other') }" data-ng-href="/photos/other/" data-ng-click="body.showMenu = {left: '-242.5px'}">САН техника</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/photos/self') }" data-ng-href="/photos/self/" data-ng-click="body.showMenu()">САНолюбование</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/photos/other') }" data-ng-href="/photos/other/" data-ng-click="body.showMenu()">САН техника</a></li>
 									</ul>
 								</li>
 								<li>	
 									<a data-ng-click="menu.expandSubMenu('videos');">Видео</a>
 									<ul class="nav nav-stacked expandable" data-ng-class="{'expanded' : menu.items.videos, 'collapsed' : !menu.items.videos}">
-										<li><a data-ng-class="{ active: menu.selectedItem('/videos/self') }" data-ng-href="/videos/self/" data-ng-click="body.showMenu = {left: '-242.5px'}">САНолюбование</a></li>
-										<li><a data-ng-class="{ active: menu.selectedItem('/videos/other') }" data-ng-href="/videos/other/" data-ng-click="body.showMenu = {left: '-242.5px'}">КлипС.А.</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/videos/self') }" data-ng-href="/videos/self/" data-ng-click="body.showMenu()">САНолюбование</a></li>
+										<li><a data-ng-class="{ active: menu.selectedItem('/videos/other') }" data-ng-href="/videos/other/" data-ng-click="body.showMenu()">КлипС.А.</a></li>
 									</ul>
 								</li>
-								<li><a data-ng-click="menu.expandSubMenu('none');body.showMenu = {left: '-242.5px'}" data-ng-class="{ active: menu.selectedItem('/feedback') }" data-ng-href="/feedback">Обратная связь</a></li>
+								<li><a data-ng-click="menu.expandSubMenu('none');body.showMenu();" data-ng-class="{ active: menu.selectedItem('/feedback') }" data-ng-href="/feedback">Обратная связь</a></li>
 							</ul>
 						</nav>
 						<div class="push"></div>
@@ -111,7 +111,7 @@
 					<div class="rights"><span>© 2015 alperina.su</span></div>
 				</aside> 
 				<main class="col-md-9 col-md-offset-3 main">
-					<div class="hamburger" data-ng-click="body.showMenu = {left: 0}">
+					<div class="hamburger" data-ng-click="body.showMenu()">
 
 					</div>
 					<header class="row header" data-ng-controller="HeaderContrller as Header">

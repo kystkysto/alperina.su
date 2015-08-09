@@ -77,8 +77,8 @@ h1, h2, h3, h4, h5 {
 
 	width: 100%;
 	font-family: 'R';
-	font-size: @font-size-large;
-	background-color: @darker;
+	font-size: 20px; /*@font-size-large;
+	background-color: @darker;*/
 	
 	a {
 		color: #fff;
@@ -86,20 +86,32 @@ h1, h2, h3, h4, h5 {
 	}
 
 	a:hover {
-		background-color: @red;
+		background-color: hsla(0, 0%, 100%, 0.1);/*@red;
 		border-top: 1px solid #fa4a4d;
-		border-bottom: 1px solid #fa4a4d;
+		border-bottom: 1px solid #fa4a4d;*/
 	}
 
 	a.active {
-		background-color: @red;
+
+		background-color: hsla(0, 0%, 100%, 0.1);/*@red;
 		border-top: 1px solid #fa4a4d;
-		border-bottom: 1px solid #fa4a4d;
+		border-bottom: 1px solid #fa4a4d;*/
+	}
+
+	a.active:before {
+	    background: url(/img/steering.png) 0 0 no-repeat;
+	    content: ' ';
+	    position: absolute;
+	    left: 10px;
+	    right: 0;
+	    width: 30px;
+	    height: 80px;
+	    background-size: 100%;
 	}
 
 
 	li {
-		background-color: @darker;
+		/*background-color: @darker;*/
 	}
 
 	> li:first-child > a {
@@ -111,18 +123,24 @@ h1, h2, h3, h4, h5 {
 	}
 	
 	> li > a {
-		padding: 10px 35px;
-		margin-bottom: 1px;
-		background-color: @blue;
+		padding: 10px 50px;
+		/*margin-bottom: 1px;
+		background-color: hsla(0, 0%, 100%, 0.1)@blue;
 		border-top: 1px solid #37699c;
-		border-bottom: 1px solid #37699c;
+		border-bottom: 1px solid #37699c;*/
+	}
+
+	> li > a{
+		&:hover, &:focus {
+			background-color: hsla(0, 0%, 100%, 0.1);
+		}
 	}
 
 	> li > ul > li > a {
-		padding: 10px 45px;
-		background-color: @darkblue;
+		padding: 10px 65px;
+		/*background-color: @darkblue;
 		border-top: 1px solid #264a70;
-		border-bottom: 1px solid #264a70;
+		border-bottom: 1px solid #264a70;*/
 	}
 }
 
@@ -134,23 +152,16 @@ header {
 	z-index: 1;
 }
 
-.quote h2:before, .quote h2:after {
+.quote h2:before {
     content: '';
     position: absolute;
-    background: url(/img/quotes.png);
-    width: 221px;
-    height: 94px;
+    background: url(/img/quotes2.png) 0 0 no-repeat;
+    width: 100px;
+    height: 100px;
     z-index: -1;
-}
-
-.quote h2:before {
-	left: 29px;
+    background-size: 100px;
     top: 30px;
-}
-.quote h2:after {
-    background-position: -221px 0;
-    right: -106px;
-    bottom: -36px;
+    left: 0px;
 }
 
 .quote h2 {
@@ -164,7 +175,7 @@ nav > .nav:after {
   height: 1px;
   position: absolute;
   bottom: 0px;
-  background-color: @blue;
+  /*background-color: @blue;*/
 }
 
 .rights {
@@ -187,7 +198,7 @@ nav > .nav:after {
 	height: 100%;
 	position:fixed;
 	z-index: 2;
-	background-color: @blue;
+	background: linear-gradient(rgba(0,209,167,.6),rgba(42,82,121,.9));/* @blue; */
 	box-sizing: border-box;
 	-webkit-transition: left 1s; /* Safari 3.1 to 6.0 */
     transition: left 1s;
@@ -217,7 +228,9 @@ nav > .nav:after {
 
 .header {
 	min-height: 131px;
-	background: linear-gradient(hsla(168, 100%, 41%, 0.6),hsla(168, 100%, 41%, 0.6)), url(/img/sea.jpg) 0 -500px;
+	//background: linear-gradient(hsla(168, 100%, 41%, 0.6),hsla(168, 100%, 41%, 0.6)), url(/img/sea.jpg) 0 -500px;
+	background: linear-gradient(hsla(210, 48%, 32%, .6),rgba(0,209,167,.6)),url(/img/sea.jpg) 0 -500px no-repeat;
+	background-size: 880px;
 	padding: 20px 0;
 	overflow: hidden;
 }
@@ -266,7 +279,7 @@ nav > .nav:after {
 .avatar {
 	border-radius: 100%;
 	overflow: hidden;
-	border: 2px solid #2e5781;
+	//border: 1px solid #2e5781;
 }
 
 .avatar-img {
@@ -324,37 +337,44 @@ nav > .nav:after {
 	height: 130px;
 
 	.icon {
-		width: 46px;
-		height: 46px;
+		width: 48px;
+		height: 48px;
 		float: left;
-		background: url(/img/social.png) no-repeat;
+		background: url(/img/save.png) no-repeat;
 		display: inline-block;
-		margin: 5px 10px;
+		margin: 5px 9px;
 		border-radius: 100%;
+		opacity: 0.5;
+	
+		&:hover {
+			opacity: 1;
+		}
 	}
+
 
 	.facebook {
 		background-position: 0 0;
+	
 	}
 
 	.twitter {
-		background-position: -46px 0;
+		background-position: -48px 0;
 	}
 
 	.linkedin {
-		background-position: -92px 0;
+		background-position: -96px 0;
 	}
 
 	.livejournal {
-		background-position: -138px 0;
+		background-position: 0px -48px;
 	}
 
 	.wikipedia {
-		background-position: -184px 0;
+		background-position: -48px -48px;
 	}
 
 	.instagram {
-		background-position: -230px 0;
+		background-position: -96px -48px;
 	}
 
 }
@@ -421,7 +441,7 @@ nav > .nav:after {
 		display: table-cell;
 		vertical-align: top;
 		font-family: 'R';
-		font-size: @font-size-large;
+		font-size: 20px;/*@font-size-large;*/
 	}
 
 	.tags {
@@ -431,7 +451,7 @@ nav > .nav:after {
 	.tag {
 
 		background-color: #f04043;
-		padding: 3px 2px;
+		padding: 1px 2px;
 		display: inline-block;
 		border-radius: 2px;
 		margin: 2px 5px;
@@ -493,8 +513,9 @@ nav > .nav:after {
 			}
 		
 			figcaption p {
-				font-size: 75%;
-				padding: 10px;
+				font-size: 100%;
+			    padding: 20px 20px;
+			    font-family: 'R';
 			}
 		}
 	}
@@ -531,21 +552,12 @@ nav > .nav:after {
 		font-size: 16px!important;
 	}
 
-	.quote h2:after, .quote h2:before {
-	    width: 87px;
-	    height: 34px;
-	    background-size: 178px;
-	}
-
 	.quote h2:before {
-	    left: -10px;
-	    top: 24px;
-	}
-
-	.quote h2:after {
-	    background-position: -269px 0;
-	    right: -35px;
-	    bottom: -4px;
+	    width: 50px;
+	    height: 50px;
+	    background-size: 50px;
+	    top: 50px;
+	    left: 0;
 	}
 }
 
