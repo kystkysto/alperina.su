@@ -1,0 +1,8 @@
+#grid {
+    .core  {
+        .span(@gridColumns) {
+            width: (@gridColumnWidth * @gridColumns) + (@gridGutterWidth * (@gridColumns - 1));
+        }
+    }
+};
+@import "../../../bower_components/bootstrap/less/bootstrap.less";

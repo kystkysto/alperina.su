@@ -7,6 +7,11 @@
         }
     }
 };
+
+.test {
+	display: block;
+}
+
 @import "../../../bower_components/bootstrap/less/bootstrap.less";
 
 
@@ -278,6 +283,12 @@ nav > .nav:after {
 	padding: 8px 10px 8px 20px;
 	box-sizing: border-box;
 	top: 10px;
+	-webkit-transform: rotate(270deg); /* Safari and Chrome */
+    -moz-transform: rotate(270deg);   /* Firefox */
+    -ms-transform: rotate(270deg);   /* IE 9 */
+    -o-transform: rotate(270deg);   /* Opera */
+    transform: rotate(270deg);
+	transform
 	-webkit-transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);
 	transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);
 	
@@ -367,7 +378,7 @@ nav > .nav:after {
 .main {
 	background-color: #fff;
 	.shadow-3;
-	.text {
+	.text > p{
 		margin-bottom: 40px;
 	}
 
@@ -519,7 +530,7 @@ nav > .nav:after {
 		display: block;
 	}
 
-	.main .text {
+	.main .text > p{
     	margin-bottom: 20px;
 	}
 
@@ -544,6 +555,7 @@ nav > .nav:after {
 	    top: 50px;
 	    left: 0;
 	}
+
 }
 
 @media (max-width: 480px) {
@@ -576,7 +588,12 @@ nav > .nav:after {
 @media (min-width: 992px) {
 	.menu {
    		width: 242.500px;
-  	}	
+  	}
+
+
+	.portait {
+		display: none;
+	}
 }
 
 @media (min-width: 1200px) {

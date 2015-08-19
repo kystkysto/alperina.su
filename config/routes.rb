@@ -1,6 +1,78 @@
 Rails.application.routes.draw do
 
-  #root 'application#index'
+  devise_for :users, :skip => :registrations
+  
+  get 'feedback/new'
+
+  get 'feedback/create'
+
+  get 'feedback/update'
+
+  get 'feedback/edit'
+
+  get 'feedback/destroy'
+
+  get 'feedback/index'
+
+  get 'feedback/show'
+
+  get 'video/new'
+
+  get 'video/create'
+
+  get 'video/update'
+
+  get 'video/edit'
+
+  get 'video/destroy'
+
+  get 'video/index'
+
+  get 'video/show'
+
+  get 'photo/new'
+
+  get 'photo/create'
+
+  get 'photo/update'
+
+  get 'photo/edit'
+
+  get 'photo/destroy'
+
+  get 'photo/index'
+
+  get 'photo/show'
+
+  get 'tag/new'
+
+  get 'tag/create'
+
+  get 'tag/update'
+
+  get 'tag/edit'
+
+  get 'tag/destroy'
+
+  get 'tag/index'
+
+  get 'tag/show'
+
+  get 'material/new'
+
+  get 'material/create'
+
+  get 'material/update'
+
+  get 'material/edit'
+
+  get 'material/destroy'
+
+  get 'material/index'
+
+  get 'material/show'
+
+  get 'admin' => 'application#index'
 
   #get '*path', to: 'main#index'
 

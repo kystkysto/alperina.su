@@ -7,28 +7,41 @@ var gulp = require('gulp'),
 	ngAnnotate = require('gulp-ng-annotate');
 //	mainBowerFiles = require('main-bower-files');
 
-gulp.task('default', ['css', 'js', 'img', 'watch'], function(){
+gulp.task('default', ['css', 'js', 'img', 'admin_lib', 'admin_js', 'admin_css', 'watch'], function(){
 
 });
 
 gulp.task('watch', function() {
 
-	gulp.watch(['public/css/app/**/*.less'], function() {
+	gulp.watch(['src/css/admin/**/*.less'], function() {
+		setTimeout(function () {
+            gulp.start('admin_css');
+        }, 500);
+	});
+
+	gulp.watch(['src/js/admin/**/*.js'], function() {
+		setTimeout(function () {
+            gulp.start('admin_js');
+        }, 500);
+	});
+
+	gulp.watch(['src/css/app/**/*.less'], function() {
 		setTimeout(function () {
             gulp.start('css');
         }, 500);
 	});
 
-	gulp.watch(['public/js/app/**/*.js'], function() {
+	gulp.watch(['src/js/app/**/*.js'], function() {
 		setTimeout(function () {
             gulp.start('js');
-        }, 300);
+        }, 500);
 	});
 
 	gulp.watch(['bower_components/**/*.js'], function() {
 		setTimeout(function () {
             gulp.start('lib');
-        }, 300);
+            gulp.start('admin_lib');
+        }, 500);
 	});
 });
 
@@ -43,7 +56,7 @@ gulp.task('img', function () {
 gulp.task('css', function () {
 
 	return gulp.src([
-		'public/css/app/**/*.less'
+		'src/css/app/**/*.less'
 	])
 		.pipe(print())
 		.pipe(less())
@@ -70,11 +83,51 @@ gulp.task('lib', function () {
 gulp.task('js', function () {
 
 	return gulp.src([
-		'public/js/app/**/*.js'
+		'src/js/app/**/*.js'
 	])
 		.pipe(print())
 		.pipe(ngAnnotate())
 		.pipe(concat('app.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('public/js'));
+});
+
+gulp.task('admin_lib', function () {
+
+	return gulp.src([
+		'bower_components/jquery/dist/jquery.min.js',
+		//'bower_components/bootstrap/js/*.js',
+		'bower_components/angular/**/*.min.js',
+		'bower_components/angular-route/**/*.min.js',
+		'bower_components/angular-sanitize/**/*.min.js',
+		'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+		'bower_components/angular-wysiwyg/dist/angular-wysiwyg.min.js',
+	])
+		.pipe(print())
+		.pipe(concat('lib.js'))
+		.pipe(gulp.dest('app/assets/javascripts'));
+});
+
+gulp.task('admin_js', function () {
+
+	return gulp.src([
+		'src/js/admin/**/*.js'
+	])
+		.pipe(print())
+		.pipe(ngAnnotate())
+		.pipe(concat('app.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('app/assets/javascripts'));
+});
+
+gulp.task('admin_css', function () {
+
+	return gulp.src([
+		'src/css/admin/**/*.css'
+	])
+		.pipe(print())
+		.pipe(less())
+		.pipe(concat('app.css'))
+		.pipe(minify())
+		.pipe(gulp.dest('app/assets/stylesheets'));
 });
