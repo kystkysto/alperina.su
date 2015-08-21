@@ -185,7 +185,7 @@ nav > .nav:after {
 	height: 100%;
 	position:fixed;
 	z-index: 2;
-	background: linear-gradient(rgba(0,209,167,.6),rgba(42,82,121,.9));/* @blue; */
+	background: #c9c9c9 linear-gradient(rgba(0,209,167,.6),rgba(42,82,121,.9));/* @blue; */
 	box-sizing: border-box;
 	-webkit-transition: left 1s; /* Safari 3.1 to 6.0 */
     transition: left 1s;
@@ -275,18 +275,18 @@ nav > .nav:after {
 
 .flag {
 	position: fixed;
-	margin-left: -90px;
+	margin-left: -20px;
 	background-color: @red;
 	padding: 8px 10px 8px 20px;
 	box-sizing: border-box;
-	top: 50px;
-		-webkit-transform: rotate(270deg); /* Safari and Chrome */
-    -moz-transform: rotate(270deg);   /* Firefox */
-    -ms-transform: rotate(270deg);   /* IE 9 */
-    -o-transform: rotate(270deg);   /* Opera */
-    transform: rotate(270deg);
-/*	-webkit-transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);
-	transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);*/
+	top: 20px;
+	//-webkit-transform: rotate(270deg); /* Safari and Chrome */
+    //-moz-transform: rotate(270deg);   /* Firefox */
+    //-ms-transform: rotate(270deg);   /* IE 9 */
+    //-o-transform: rotate(270deg);   /* Opera */
+    //transform: rotate(270deg);
+	-webkit-transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);
+	transition: margin-left 0.5s cubic-bezier(0.4, 1, 0.2, 1);
 	
 	h1 {
 		font-size: @font-size-large;
@@ -314,7 +314,7 @@ nav > .nav:after {
 	}
 
 	&:hover {
-		/*margin-left: -140px;*/
+		margin-left: -140px;
 	}
 }
 
@@ -576,6 +576,7 @@ nav > .nav:after {
    		left: -242.500px;
    		z-index: 2;
    		width: 242.500px;
+   		background: linear-gradient(rgba(0,209,167,.6),rgba(42,82,121,.9));
   	}
   	.hamburger ,
 	.close-menu {
