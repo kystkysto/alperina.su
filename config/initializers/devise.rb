@@ -6,7 +6,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` on Rails 4+ applications as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = '5326c504b9ca3baa5f4c583ce0c4dbb8934bdcdc3e3722f886e7ff2a4dcbb21a89ce6cc5e8d8601f8d6ef877797f8b052ce43f9214f25247e4edb501781c0ca1'
+  # config.secret_key = '62d63b8a355f15e162b484e562e9bf29ddaba3ead24ad38ef7c8a4792c71903ff2bebe99f2dbef97f4db48e04747a4ea8981fbd582449b97e6ea470d9f4ccc39'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -99,7 +99,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '904cb9ee0834f577cfa01e9b604d882b033a2f2fb86bcc3e6e43a0b002da7feb74550681a0ed9acb71f236c42f343fa460f420c4ad41602e1970057844a86d47'
+  # config.pepper = '1e7620da195299510880a50c0b09fa42b25c5ed3cb9befe1d1d4c23633a696fabaf23861e9196d56b0e2f5597cec58749051a2b3d02aa2c8277ccd2ee3844ba1'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -121,7 +121,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = true
+  config.reconfirmable = false
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
@@ -230,7 +230,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

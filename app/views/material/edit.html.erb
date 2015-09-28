@@ -1,2 +1,57 @@
-<h1>Material#edit</h1>
-<p>Find me in app/views/material/edit.html.erb</p>
+<h1>Материал</h1>
+<div class="well">
+    <form>
+    <div class="row">
+        <div class="col-lg-9">
+            <h4>Загаловок</h4>
+            <input class="form-control" type="text" ng-model="material.title" />
+        </div>
+        <div class="col-lg-3">
+            <h4>Опубликованно</h4>
+            <input class="form-control" type="date" name="published" ng-model="material.published">
+        </div>
+    </div>
+<!-- <button ng-click="disabled = !disabled" unselectable>Disable text-angular Toggle</button> -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" >
+            <h4>Текст</h4>
+            <div text-angular="text-angular" name="htmlcontent" ng-model="material.text" ta-disabled='disabled'></div>
+        </div>
+        <div class="col-md-3">
+
+            <h4>Рубрика</h4>
+            <select class="form-control"
+                ng-model="material.rubric">
+                <option value="" disabled selected>Выбрать рубрику</option>
+                <option ng-repeat="rubric in materialRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
+            </select>
+
+            <h4>Тэги</h4>
+            <select ng-disabled="material.rubric !== 'persons'" size="10" id="myselection" class="form-control" multiple ng-multiple="true" ng-model="selectedTags" ng-options="t.name for t in materialTags"></select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><button class="form-control btn btn-danger">Удалить</button></div>
+        <div class="col-lg-6">
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><input type="submit" class="form-control" value="Сохранить" /></div>
+    </div>
+    <!-- <div class="row">
+        <h3 class="col-lg-10">Код</h3>
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
+            <textarea class="form-control" rows="10" ng-model="htmlcontent"></textarea>
+        </div>
+    </div> -->
+    <form>
+<!--  <h3>Bound with ng-bind-html</h3>
+  <div ng-bind-html="htmlcontent"></div>
+  <h3>Bound with ta-bind, our internal html-binding directive</h3>
+  <div ta-bind="text" ng-model="htmlcontent" ta-readonly='disabled'></div>
+  <button type="button" ng-click="htmlcontent = orightml">Reset</button>
+  <p>Note: although we support classes and styles, angularjs' ng-bind-html directive will strip out all style attributes.</p>
+  
+  <h3>Option to masquerade as a fancy text-area - complete with form submission and optional ngModel</h3> -->
+<!--   <text-angular name="htmlcontent"><p>Any <b>HTML</b> we put in-between the text-angular tags gets automatically put into the editor if there <strong style="font-size: 12pt;"><u><em>is not</em></u></strong> a ngModel</p></text-angular> -->
+</div>

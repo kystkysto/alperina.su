@@ -17,6 +17,7 @@ class HomeController < ApplicationController
   end
 
   def index
+    render "edit"
   end
 
   def show

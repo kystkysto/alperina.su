@@ -7,19 +7,20 @@ function BodyController() {
 
     var left = true;
 
-    this.position = {left:'-242.5px'};
+    this.position = 'menu_colapsed';
 
     this.expand = function expand(){
         
         if(left) {
 
             left = false;
-            this.position = {left:'0'};
+            //this.position = {left:'0'};
+            this.position = 'menu_expanded';
 
         } else {
 
             left = true;
-            this.position = {left:'-242.5px'};
+            this.position = 'menu_colapsed';
         }
 
     };

@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html  ng-app="admin">
 <head>
+    <base href="/admin/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alperina.su admin</title>
+    <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" type="text/css" href="/css/admin.css">
 </head>
 <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+<div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="/">
+                        alperina.su
+                    </a>
+                </li>
+                <li>
+                    <a ng-href="materials">Материалы</a>
+                </li>
+                <li>
+                    <a ng-href="photos">Фотографии</a>
+                </li>
+                <li>
+                    <a ng-href="videos">Видео</a>
+                </li>
+                <li>
+                    <a ng-href="tags">Тэги</a>
+                </li>
+                <li>
+                    <a class="red" ng-href="/users/sign_out">Выйти</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Меню</a>
+                    </div>
+                </div>
+                <div ng-view></div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <script type="text/javascript" src="/admin/lib.js"></script>
+    <script type="text/javascript" src="/admin/app.js"></script>
 </body>
 </html>

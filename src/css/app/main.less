@@ -20,7 +20,6 @@
 @darkblue: #1d3956;
 @darker: darken(@darkblue, 10%);
 
-
 body, html, .container, .container > .row {
 	height: 100%;
 }
@@ -69,6 +68,12 @@ h1, h2, h3, h4, h5 {
 	
 		color: #fff;
 		cursor: pointer;
+
+		span {
+			width: 200px;
+			margin: auto;
+			display: block;
+		}
 	
 
 		&:hover {
@@ -94,6 +99,10 @@ h1, h2, h3, h4, h5 {
 		    height: 80px;
 		    background-size: 100%;
 		}
+
+		&.menu__items__feedback.active:before {
+			display: none;
+		}
 	}
 
 
@@ -110,11 +119,15 @@ h1, h2, h3, h4, h5 {
 	}
 	
 	> li > a {
-		padding: 10px 50px;
+		padding: 10px 0px;
 		/*margin-bottom: 1px;
 		background-color: hsla(0, 0%, 100%, 0.1)@blue;
 		border-top: 1px solid #37699c;
 		border-bottom: 1px solid #37699c;*/
+
+		& > span {
+			padding: 0px 9px;
+		}
 	}
 
 	> li > a{
@@ -123,9 +136,10 @@ h1, h2, h3, h4, h5 {
 		}
 	}
 
-	> li > ul > li > a {
-		padding: 10px 65px;
-		/*background-color: @darkblue;
+	> li > ul > li > a > span{
+		padding: 0px 30px;
+		/*padding: 10px 50px;
+		background-color: @darkblue;
 		border-top: 1px solid #264a70;
 		border-bottom: 1px solid #264a70;*/
 	}
@@ -572,9 +586,16 @@ nav > .nav:after {
 }
 
 @media (max-width: 991px) {
-	.menu {
+	.menu_colapsed {
    		left: -242.500px;
-   		z-index: 2;
+  	}
+
+  	.menu_expanded {
+  		left: 0px;	
+  	}
+
+  	.menu {
+  		   		z-index: 2;
    		width: 242.500px;
    		background: linear-gradient(rgba(0,209,167,.6),rgba(42,82,121,.9));
   	}
@@ -584,12 +605,6 @@ nav > .nav:after {
 	}
 	.avatar-wrapper {
 		display: none;
-	}
-
-	.nav {
-		a:hover {
-			background-color: black;
-		}
 	}
 }
 

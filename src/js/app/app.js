@@ -70,7 +70,7 @@
 				controller: 'FeedbackController',
 				controllerAs: 'Feedback'
 			}
-		}
+		};
 
 		$routeProvider
 

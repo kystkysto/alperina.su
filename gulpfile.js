@@ -97,15 +97,19 @@ gulp.task('admin_lib', function () {
 	return gulp.src([
 		'bower_components/jquery/dist/jquery.min.js',
 		//'bower_components/bootstrap/js/*.js',
-		'bower_components/angular/**/*.min.js',
-		'bower_components/angular-route/**/*.min.js',
-		'bower_components/angular-sanitize/**/*.min.js',
+		'bower_components/angular/angular.min.js',
+		'bower_components/angular-resource/angular-resource.min.js',
+		'bower_components/angular-route/angular-route.min.js',
+		'bower_components/ng-file-upload/ng-file-upload-all.min.js',
+		'bower_components/angular-sanitize/angular-sanitize.min.js',
 		'bower_components/angular-bootstrap/ui-bootstrap.min.js',
-		'bower_components/angular-wysiwyg/dist/angular-wysiwyg.min.js',
+		'bower_components/textAngular/dist/textAngular-sanitize.min.js',
+		'bower_components/textAngular/dist/textAngular.min.js',
+		'bower_components/textAngular/dist/textAngular-rangy.min.js',
 	])
 		.pipe(print())
-		.pipe(concat('lib.js'))
-		.pipe(gulp.dest('app/assets/javascripts'));
+		.pipe(concat('lib.js.erb'))
+		.pipe(gulp.dest('app/views/aplication/'));
 });
 
 gulp.task('admin_js', function () {
@@ -115,19 +119,21 @@ gulp.task('admin_js', function () {
 	])
 		.pipe(print())
 		.pipe(ngAnnotate())
-		.pipe(concat('app.js'))
+		.pipe(concat('app.js.erb'))
 		.pipe(uglify())
-		.pipe(gulp.dest('app/assets/javascripts'));
+		.pipe(gulp.dest('app/views/aplication/'));
 });
 
 gulp.task('admin_css', function () {
 
 	return gulp.src([
-		'src/css/admin/**/*.css'
+		'bower_components/bootstrap/dist/css/bootstrap.min.css',
+		'bower_components/textAngular/dist/textAngular.css',
+		'src/css/admin/**/*.less',
 	])
 		.pipe(print())
 		.pipe(less())
-		.pipe(concat('app.css'))
+		.pipe(concat('admin.css'))
 		.pipe(minify())
-		.pipe(gulp.dest('app/assets/stylesheets'));
+		.pipe(gulp.dest('public/css'));
 });

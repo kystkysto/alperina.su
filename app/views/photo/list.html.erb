@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Список фотографий</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-inverse">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="photos/all">Все</a></li>
+                <li><a href="photos/self">Свои</a></li>
+                <li><a href="photos/other">Другие</a></li>
+                <li><a href="photos/club">Клуб</a></li>
+                <li><a href="photos/material">Материалы</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 img"
+        ng-repeat="photo in list"
+        ng-controller="PhotoController">
+        <div class="img well">
+
+            <figure class="figure">
+                <div class="img__preview">
+                    <img ng-src="/img/photos/{{photo.path}}" class="img-rounded img__image" alt="{{photo.description}}">
+                </div>
+                <figcaption class="img__descirption">
+                    <textarea ng-model="photo.description" ng-model-options="{ debounce: 500 }" type="text" class="img__input form-control" placeholder="Описание"></textarea>
+                </figcaption>
+
+            </figure>
+            <div class="img-actions">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <select class="form-control img-actions__rubric"
+                            ng-model="photo.rubric">
+                            <option value="" disabled selected>Выбрать рубрику</option>
+                            <option ng-repeat="rubric in photoRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-default"
+                        ng-disabled="!photoChanged"
+                        ng-click="savePhoto()">Сохранить</button></div>
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-danger"
+                        ng-click="deletePhoto($index)">Удалить</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
