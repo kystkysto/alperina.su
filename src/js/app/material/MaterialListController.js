@@ -5,10 +5,14 @@
 	angular.module('Alperina.controllers')
 		.controller('MaterialListController', MaterialListController);
 
-	function MaterialListController($rootScope, $location, Header) {
+	function MaterialListController($rootScope, $location, Header, $http) {
 
-		var self = this,
-			materials = [
+		var self = this;
+		$http.get('/api/material.json?rubric=persons').then(function(list) {
+			console.log('list');
+	    	self.materials = list.data;
+		});
+/*			materials = [
 				{
 					id: 1,
 					title: 'Страна "Нельзя"',
@@ -58,9 +62,9 @@
 						}
 					]
 				}
-			];
+			];*/
 		
-		self.materials = materials;
+		//self.materials = materials;
 
 		self.showTags = Header.showTags;
 

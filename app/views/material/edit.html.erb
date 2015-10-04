@@ -1,6 +1,6 @@
 <h1>Материал</h1>
 <div class="well">
-    <form>
+    <form class="material-form">
     <div class="row">
         <div class="col-lg-9">
             <h4>Загаловок</h4>
@@ -22,7 +22,9 @@
             <h4>Рубрика</h4>
             <select class="form-control"
                 ng-model="material.rubric">
-                <option value="" disabled selected>Выбрать рубрику</option>
+                <option value=""
+                    disabled
+                    selected >Выбрать рубрику</option>
                 <option ng-repeat="rubric in materialRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
             </select>
 
@@ -31,10 +33,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><button class="form-control btn btn-danger">Удалить</button></div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><button class="form-control btn btn-danger material-form__button">Удалить</button></div>
         <div class="col-lg-6">
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><input type="submit" class="form-control" value="Сохранить" /></div>
+        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3"><input ng-disabled="false"
+            type="submit"
+            class="form-control material-form__button"
+            value="Сохранить"
+            ng-click="saveMaterial()" /></div>
     </div>
     <!-- <div class="row">
         <h3 class="col-lg-10">Код</h3>
@@ -44,7 +50,7 @@
             <textarea class="form-control" rows="10" ng-model="htmlcontent"></textarea>
         </div>
     </div> -->
-    <form>
+    </form>
 <!--  <h3>Bound with ng-bind-html</h3>
   <div ng-bind-html="htmlcontent"></div>
   <h3>Bound with ta-bind, our internal html-binding directive</h3>

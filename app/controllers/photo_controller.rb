@@ -5,17 +5,19 @@ class PhotoController < ApplicationController
 
   def create
     
-    ext = File.extname(params[:photo].original_filename)
+    photo = params.require(:photo).permit(:file, :description, :rubric)
+
+    ext = File.extname(photo[:file].original_filename)
     name = SecureRandom.hex(6) + ext
     directory = "public/img/photos"
 
     path = File.join(directory, name)
     
     File.open(path, "wb") do |f| 
-      f.write(params[:photo].read)
+      f.write(photo[:file].read)
     end  
     
-    @photo = Photo.new(path: name)
+    @photo = Photo.new(path: name, description: photo[:description], rubric: photo[:rubric])
     @photo.save
     render :json => @photo
   end
@@ -50,6 +52,12 @@ class PhotoController < ApplicationController
   def show
     @photo = Photo.find_by_id(params[:id])
     render :json => @photo
+  end
+
+  def overlay
+    respond_to do |format|
+      format.html
+    end
   end
 
   def list

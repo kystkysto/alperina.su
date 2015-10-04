@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'material/edit' => 'material#edit'
     get 'photo/list' => 'photo#list'
     get 'photo/list' => 'photo#list'
+    get 'photo/overlay' => 'photo#overlay'
     get 'video/list' => 'video#list'
     get 'video/edit' => 'video#edit'
     get 'tag/list' => 'tag#list'

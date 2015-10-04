@@ -15,16 +15,70 @@
                 <li><a href="photos/material">Материалы</a></li>
             </ul>
         </nav>
+        <div class="progress">
+            <div class="progress-bar" ng-style="progressWidth" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 img"
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 img-uploader">
+        <div class="img well">
+
+            <figure class="figure">
+                <div class="img__preview">
+                    <img
+                        class="img-rounded img__image"
+                        ng-click="clearPhoto()"
+                        ng-class="imgClass"
+                        ngf-size="{width: 300, height: 300, quality: 0.9}"
+                        ngf-thumbnail="photoFile || ''">
+                    <div
+                        ngf-drop
+                        
+                        ngf-select="selectPhoto(photoFile)"
+                        ng-model="photoFile"
+                        class="img-uploader__file" 
+                        ngf-drag-over-class="img-uploader__file_hovered"
+                        ngf-multiple="false"
+                        ngf-allow-dir="false"
+                        accept="image/*"
+                        ngf-pattern="'image/*'">Перетащите файл сюда или кликните</div>
+                    <div ngf-no-file-drop>Перетаскивание не доступно</div>
+                </div>
+                <figcaption class="img__descirption">
+                    <textarea ng-model="photo.description" ng-model-options="{ debounce: 500 }" type="text" class="img__input form-control" placeholder="Описание"></textarea>
+                </figcaption>
+
+            </figure>
+            <div class="img-actions">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <select class="form-control img-actions__rubric"
+                            ng-model="photo.rubric">
+                            <option value="" disabled selected>Выбрать рубрику</option>
+                            <option ng-repeat="rubric in photoRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-default"
+                        ng-disabled="!photoChanged"
+                        ng-click="savePhoto()">Сохранить</button></div>
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-warning"
+                        ng-click="clearPhoto()">Сбросить</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"
         ng-repeat="photo in list"
         ng-controller="PhotoController">
         <div class="img well">
 
             <figure class="figure">
-                <div class="img__preview">
+                <div
+                    class="img__preview"
+                    ng-click="choosePhoto(photo.path)">
                     <img ng-src="/img/photos/{{photo.path}}" class="img-rounded img__image" alt="{{photo.description}}">
                 </div>
                 <figcaption class="img__descirption">

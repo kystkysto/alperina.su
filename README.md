@@ -1,1 +1,3 @@
-# alperina.su
+# angular-rails
+
+Angular front end rails back end

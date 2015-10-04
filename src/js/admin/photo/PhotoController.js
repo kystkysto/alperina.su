@@ -1,9 +1,13 @@
 angular.module('admin')
 
-    .controller('PhotoController', function($scope, Photo) {
+    .controller('PhotoController', function($rootScope, $scope, Photo) {
         console.log('PhotoController');
-        console.log($scope.photo);
+        /*console.log($scope.photo);*/
         $scope.photoChanged = false;
+
+        $scope.choosePhoto = function choosePhoto(path) {
+            $rootScope.$emit('photoSelected', path);
+        };
 
         $scope.savePhoto = function savePhoto() {
             Photo.update({id:$scope.photo.id}, {photo: $scope.photo});
@@ -12,7 +16,7 @@ angular.module('admin')
 
         $scope.deletePhoto = function savePhoto($index) {
             Photo.delete({id:$scope.photo.id});
-            delete $scope.list[$index];
+            $scope.list.splice($index, 1);
         };
 
         $scope.$watch(function() {
@@ -20,9 +24,8 @@ angular.module('admin')
         }, checkPhoto, true);
 
         function checkPhoto(next, prev) {
-            if(next!==prev) {
+            if(next !== prev) {
                 $scope.photoChanged = true;
             }
         }
-
     });

@@ -96,13 +96,13 @@ gulp.task('admin_lib', function () {
 
 	return gulp.src([
 		'bower_components/jquery/dist/jquery.min.js',
-		//'bower_components/bootstrap/js/*.js',
+		'bower_components/bootstrap/js/bootstrap.min.js',
 		'bower_components/angular/angular.min.js',
+		'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 		'bower_components/angular-resource/angular-resource.min.js',
 		'bower_components/angular-route/angular-route.min.js',
 		'bower_components/ng-file-upload/ng-file-upload-all.min.js',
 		'bower_components/angular-sanitize/angular-sanitize.min.js',
-		'bower_components/angular-bootstrap/ui-bootstrap.min.js',
 		'bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'bower_components/textAngular/dist/textAngular.min.js',
 		'bower_components/textAngular/dist/textAngular-rangy.min.js',

@@ -1,1 +1,36 @@
-<h1>Список материалов</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Список материалов</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-inverse">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="materials/all">Все</a></li>
+                <li><a ng-href="materials/reviews">Рецензии</a></li>
+                <li><a ng-href="materials/persons">Персоны</a></li>
+                <li><a ng-href="materials/travel">Путешечтвия</a></li>
+                <li><a ng-href="materials/news">Новости Клуба</a></li>
+                <li><a ng-href="materials/poetry">Стихи</a></li>
+                <li><a ng-href="materials/songs">Песни</a></li>
+                <li><a ng-href="materials/stories">Рассказы</a></li>
+                <li><a ng-href="materials/thoughts">Мысли</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 img"
+        ng-repeat="material in list"
+        ng-controller="PhotoController">
+        <div class="material well">
+            <div class="material__header"></div>
+                <h2><a ng-href="material/{{material.id}}" class="material__title">{{material.title}}</a></h2>
+                <p class="material__description">{{material.text}}</p>
+                <div class="material__published">{{material.published | date:'dd.MM.yyyy'}}</div>
+            </div>
+        </div>
+    </div>
+</div>

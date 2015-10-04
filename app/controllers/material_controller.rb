@@ -10,7 +10,14 @@ class MaterialController < ApplicationController
   end
 
   def update
+    @tags = params[:material][:tags]
+
+    #@tags.each do |t|
+    #  @material_tag = MaterialTag.new({tag_id: t, material_id: params[:id]})
+    #  @material_tag.save
+    #end
     @material = Material.update(params[:id], permit)
+    #render :json => {tags:  @material.tags, mat: @material}
     render :json => @material
   end
 
@@ -20,7 +27,25 @@ class MaterialController < ApplicationController
   end
 
   def index
-    @materials = Material.all
+    if params[:rubric] && params[:rubric] != 'all'
+      @materials = Material.where(rubric: params[:rubric]).order(published: :desc)
+    else
+      @materials = Material.all.order(published: :desc)
+    end
+    
+    @materials.map do |m|
+
+      txt = m.text
+      Nokogiri::HTML.parse(txt).css('p').each do |p|
+        if p.text != ''
+          txt = p.text
+          break
+        end
+      end
+      
+      txt = ActionController::Base.helpers.strip_tags(txt)[0...500]
+      m.text = txt
+    end
     render :json => @materials
   end
 

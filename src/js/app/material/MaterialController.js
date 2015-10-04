@@ -5,9 +5,16 @@
 	angular.module('Alperina.controllers')
 		.controller('MaterialController', MaterialController);
 
-	function MaterialController($routeParams, $sce, Header) {
+	function MaterialController($routeParams, $sce, $http, Header) {
 
-		var self = this,
+		var self = this;
+
+		$http.get('/api/material/' + $routeParams.id).then(function(material) {
+			console.log(material);
+			self.material = material.data;
+			Header.setTitle(self.material.title);
+		});
+		/*,
 			materials = [
 				{
 					id: 1,
@@ -54,16 +61,15 @@
 			];
 
 		self.material = {};
-		console.log(materials);
+		console.log(materials);*/
 		
-		for(i in materials) {
+		/*for(i in materials) {
 			if(materials[i].id == $routeParams.id) {
 				console.log(materials[i]);
 				self.material = materials[i];
 			}
-		}
+		}*/
 
-		Header.setTitle(self.material.title);
 	}
 
 })();

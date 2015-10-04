@@ -241,8 +241,75 @@ input#user_remember_me {
         margin: 10px 0;
     }
 
-    &-actions__rubric   {
-        margin-bottom: 10px;
+    &-actions {
+
+        &__rubric   {
+            margin-bottom: 10px;
+        }
     }
 }
 
+.material-form {
+
+    &__button {
+        margin-top: 20px;
+    }
+/*
+    &__label {
+        margin: 20px 0;
+    }*/
+}
+
+.img-uploader {
+
+    &__file {
+
+        width: 100%;
+        height: 20rem;
+        border: 5px dashed gray;
+        border-radius: 10px;
+        text-align: center;
+        padding: 70px 10px;
+        font-size: 20px;
+        cursor: pointer;
+
+        &_hovered {
+            border-color: #d9534f;
+            color: #d9534f;
+            cursor: move;
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: -9999px;
+        &_show {
+            position: relative;
+        }
+    }
+}
+
+.progress-bar {
+    height: 20px; 
+}
+
+.photos-window {
+
+    padding: 50px;
+    
+    .img__image:hover {
+        opacity: .8;
+    }
+    
+    &__close {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        background: #d9534f;
+        padding: 10px 15px;
+        color: #fff;
+        border-color: #d43f3a;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}

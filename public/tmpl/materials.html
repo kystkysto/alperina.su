@@ -3,7 +3,7 @@
 		<article class="list-item" data-ng-repeat="material in MaterialList.materials">
 			<header class="list-item-title">
 				<h2><a data-ng-href="{{MaterialList.path}}/{{material.id}}">{{material.title}}</a></h2>
-				<span class="date">{{material.date}}</span>
+				<span class="date">{{material.published | date:'dd.MM.yyyy'}}</span>
 			</header>
 			<div class="list-item-text">
 				<p>
