@@ -5,6 +5,7 @@
 	angular.module('Alperina',[
 		'ngRoute',
 		'ngSanitize',
+		'youtube-embed',
 		'Alperina.controllers',
 		'Alperina.services'
 	]);
@@ -43,8 +44,8 @@
 
 			san: {
 				templateUrl: 'tmpl/san.html',
-/*				controller: 'MaterialController',
-				controllerAs: 'Material'*/
+				controller: 'SanListController',
+				controllerAs: 'MaterialList'
 			},
 			
 			scince: {
@@ -75,14 +76,15 @@
 		$routeProvider
 
 			.when('/', routes.home)
-			.when('/articles/:type/:id', routes.material)
-			.when('/articles/:type', routes.materials)
-			.when('/club/news', routes.materials)
-			.when('/club/photos', routes.photos)
-			.when('/san/:type', routes.san)
-			.when('/scince/:type', routes.scince)
-			.when('/photos/:type', routes.photos)
-			.when('/videos/:type', routes.videos)
+			.when('/articles/:rubric/:id', routes.material)
+			.when('/articles/:rubric', routes.materials)
+			.when('/club/materials/:rubric', routes.materials)
+			.when('/club/materials/:rubric/:id', routes.material)
+			.when('/club/photos/:rubric', routes.photos)
+			.when('/san/:rubric', routes.san)
+			.when('/scince/:rubric', routes.scince)
+			.when('/photos/:rubric', routes.photos)
+			.when('/videos/:rubric', routes.videos)
 			.when('/feedback', routes.feedback)
 
 			.otherwise({ redirectTo: '/' });

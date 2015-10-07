@@ -123,10 +123,10 @@ angular.module('admin', [
            controller: 'VideosController',
            controllerAs: 'videos'
        })
-       .when('/videos/:id', {
-           templateUrl: '/api/video/edit.html',
-           controller: 'VideoController',
-           controllerAs: 'video'
+       .when('/videos/:rubric', {
+           templateUrl: '/api/video/list.html',
+           controller: 'VideosController',
+           controllerAs: 'videos'
        })
        .when('/tags', {
            templateUrl: '/api/tag/list.html',

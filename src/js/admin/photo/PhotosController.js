@@ -36,7 +36,7 @@ angular.module('admin')
             },
             {
                 name: 'Клуб',
-                value: 'club'
+                value: 'photos'
             },
             {
                 name: 'Материалы',
@@ -88,7 +88,7 @@ angular.module('admin')
                     console.log('progress: ' + progressPercentage + '% ');
                 })
                 .success(function (data, status, headers, config) {
-                    $scope.list.push(data);
+                    $scope.list.unshift(data);
                 });
             }
         };

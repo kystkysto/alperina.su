@@ -20,7 +20,11 @@ class VideoController < ApplicationController
   end
 
   def index
-    @videos = Video.all
+    if params[:rubric] && params[:rubric] != 'all'
+      @videos = Video.where(rubric: params[:rubric]).order(created_at: :desc)
+    else
+      @videos = Video.all.order(created_at: :desc)
+    end
     render :json => @videos
   end
 

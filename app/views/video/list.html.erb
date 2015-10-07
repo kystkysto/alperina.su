@@ -1,1 +1,89 @@
-<h1>Список видео</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Список видео</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-inverse">
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="videos/all">Все</a></li>
+                <li><a href="videos/self">Свои</a></li>
+                <li><a href="videos/other">Другие</a></li>
+            </ul>
+        </nav>
+        <div class="progress">
+            <div class="progress-bar" ng-style="progressWidth" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 video-uploader">
+        <div class="video well">
+
+            <div>
+                <input type="text" ng-model="video.name" class="video__input form-control" placeholder="Название" />
+            </div>
+            <div>
+                <textarea rows="5" ng-model="video.description" class="video__input form-control" placeholder="Описание"></textarea>
+            </div>
+            <div>
+                <textarea rows="2" ng-model="video.content" class="video__input form-control" placeholder="Видео"></textarea>
+            </div>
+            
+            <div class="video-actions">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <select class="form-control video-actions__rubric video__input"
+                            ng-model="video.rubric">
+                            <option value="" disabled selected>Выбрать рубрику</option>
+                            <option ng-repeat="rubric in videoRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-default"
+                        ng-disabled="!videoChanged"
+                        ng-click="saveVideo()">Сохранить</button></div>
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-warning"
+                        ng-click="clearVideo()">Сбросить</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"
+        ng-repeat="video in list"
+        ng-controller="VideoController">
+        <div class="video well">
+
+            <div>
+                <input type="text" ng-model="video.name" class="video__input form-control" placeholder="Название" />
+            </div>
+            <div>
+                <textarea rows="5" ng-model="video.description" class="video__input form-control" placeholder="Описание"></textarea>
+            </div>
+            <div>
+                <textarea rows="2" ng-model="video.content" class="video__input form-control" placeholder="Видео"></textarea>
+            </div>
+            <div class="video-actions">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <select class="form-control video-actions__rubric video__input"
+                            ng-model="video.rubric">
+                            <option value="" disabled selected>Выбрать рубрику</option>
+                            <option ng-repeat="rubric in videoRubrics" value="{{rubric.value}}">{{rubric.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-default"
+                        ng-disabled="!videoChanged"
+                        ng-click="saveVideo()">Сохранить</button></div>
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-danger"
+                        ng-click="deleteVideo($index)">Удалить</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

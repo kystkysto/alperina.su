@@ -1,9 +1,10 @@
 angular.module('admin')
 
-    .controller('MaterialsController', function($scope, Material) {
+    .controller('MaterialsController', function($scope, $routeParams, Material) {
         console.log('MaterialsController');
 
-        $scope.list = Material.query({rubric: $scope.rubric}, function(list) {
+        var rubric = $routeParams.rubric;
+        $scope.list = Material.query({rubric: rubric}, function(list) {
             console.log(list);
         });
     });

@@ -1,10 +1,11 @@
 angular.module('admin')
 
-    .controller('MaterialController', function($scope, $routeParams, $log, Material) {
+    .controller('MaterialController', function($scope, $routeParams, $location, $log, Material) {
         
         $log.info('MaterialController');
 
         $scope.showPhotosWindow = false;
+        $scope.selectedTags = [];
 
         var material = {};
         $scope.file = '';
@@ -12,12 +13,11 @@ angular.module('admin')
 
         if(!isNaN(parseFloat($routeParams.id))) {
 
-            material = Material.get({ id: $routeParams.id }, function(material) {
-                material.published = new Date(material.published);
-                $scope.material = material;
+            material = Material.get({ id: $routeParams.id }, function(data) {
+                data.material.published = new Date(data.material.published);
+                $scope.selectedTags = data.tags;
+                $scope.material = data.material;
             });
-
-
         }
 
         /*var modalInstance = $modal.open({
@@ -37,8 +37,13 @@ angular.module('admin')
         $scope.saveMaterial = function saveMaterial() {
 
             var material = $scope.material;
+            
+            if(material.rubric === 'persons') {
 
-            material.tags = $scope.selectedTags;
+                material.tags = $scope.selectedTags;
+            } else {
+                $scope.selectedTags = [];
+            }
 
             if($scope.material.id) {
 
@@ -50,6 +55,7 @@ angular.module('admin')
                 Material.save({material: material}, function(material) {
                     material.published = new Date(material.published);
                     $scope.material = material;
+                    $location.path('/material/' + material.id);
                 });
             }
             //$scope.materialChanged = false;
@@ -76,21 +82,44 @@ angular.module('admin')
                 value: 'reviews'
             },
             {
-                name: 'Новости',
+                name: 'Путешечтвия',
+                value: 'travel'
+            },
+            {
+                name: 'Новости Клуба',
                 value: 'news'
+            },
+            {
+                name: 'Стихи',
+                value: 'poetry'
+            },
+            {
+                name: 'Песни',
+                value: 'songs'
+            },
+            {
+                name: 'Рассказы',
+                value: 'stories'
+            },
+            {
+                name: 'Мысли',
+                value: 'thoughts'
             }
         ];
 
         $scope.materialTags = [
             {
+                id: 1,
                 name: 'Звёзды',
                 alias: 'celebrity'
             },
             {
+                id: 2,
                 name: 'Актёры',
                 alias: 'actors'
             },
             {
+                id: 3,
                 name: 'Режисёры',
                 alias: 'Directors'
             }

@@ -3,9 +3,11 @@
 angular.module('Alperina.controllers')
 	.controller('PhotosController', PhotosController);
 
-function PhotosController($http) {
+function PhotosController($http, $routeParams) {
 
-    $http.get('/api/photo/?rubric=all').then(function(list) {
+    var rubric = $routeParams.rubric;
+
+    $http.get('/api/photo/?rubric=' + rubric).then(function(list) {
 
         this.photos = list.data;
     }.bind(this));

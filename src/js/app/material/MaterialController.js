@@ -9,9 +9,9 @@
 
 		var self = this;
 
-		$http.get('/api/material/' + $routeParams.id).then(function(material) {
-			console.log(material);
-			self.material = material.data;
+		$http.get('/api/material/' + $routeParams.id).then(function(data) {
+			console.log(data.data);
+			self.material = data.data.material;
 			Header.setTitle(self.material.title);
 		});
 		/*,

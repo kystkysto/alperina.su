@@ -73,7 +73,8 @@ gulp.task('lib', function () {
 		'bower_components/angular/**/*.min.js',
 		'bower_components/angular-route/**/*.min.js',
 		'bower_components/angular-sanitize/**/*.min.js',
-		'bower_components/angular-bootstrap/ui-bootstrap.min.js'
+		'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+		'bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js'
 	])
 		.pipe(print())
 		.pipe(concat('lib.js'))

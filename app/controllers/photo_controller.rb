@@ -42,9 +42,9 @@ class PhotoController < ApplicationController
 
   def index
     if params[:rubric] && params[:rubric] != 'all'
-      @photos = Photo.where(rubric: params[:rubric])
+      @photos = Photo.where(rubric: params[:rubric]).order(created_at: :desc)
     else
-      @photos = Photo.all
+      @photos = Photo.all.order(created_at: :desc)
     end
     render :json => @photos
   end

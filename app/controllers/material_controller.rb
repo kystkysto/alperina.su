@@ -5,19 +5,34 @@ class MaterialController < ApplicationController
 
   def create
     @material = Material.new(permit)
+
+    @tags = params[:material][:tags]
+
+    if @tags
+      MaterialTag.delete_all('material_id = ' + params[:id])
+      @tags.each do |k,v|
+        @material.tags << Tag.find(k[:id])
+      end
+    end
+
     @material.save
     render :json => @material
   end
 
   def update
+    @material = Material.update(params[:id], permit)
+    
     @tags = params[:material][:tags]
 
-    #@tags.each do |t|
-    #  @material_tag = MaterialTag.new({tag_id: t, material_id: params[:id]})
-    #  @material_tag.save
-    #end
-    @material = Material.update(params[:id], permit)
-    #render :json => {tags:  @material.tags, mat: @material}
+    if @tags
+      MaterialTag.delete_all('material_id = ' + params[:id])
+      @tags.each do |k,v|
+        @material.tags << Tag.find(k[:id])
+      end
+    end
+
+    @material.save
+    
     render :json => @material
   end
 
@@ -34,7 +49,6 @@ class MaterialController < ApplicationController
     end
     
     @materials.map do |m|
-
       txt = m.text
       Nokogiri::HTML.parse(txt).css('p').each do |p|
         if p.text != ''
@@ -49,9 +63,19 @@ class MaterialController < ApplicationController
     render :json => @materials
   end
 
+  def new
+    @materials = {}
+
+    if params[:rubric] && params[:rubric] != 'all'
+      @materials = Material.where(rubric: params[:rubric]).order(published: :desc)
+    end
+    
+    render :json => @materials
+  end
+
   def show
     @material = Material.find_by_id(params[:id])
-    render :json => @material
+    render :json => { material: @material, tags: @material.tags }
   end
 
   def list

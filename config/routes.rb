@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     resources :feedback, :video, :home, :photo, :tag, :material, shallow: true #, only: [:index, :show, :create, :update, :destroy]
   end
 
-
-
   get 'admin' => 'application#index'
   get 'admin/app.js' => 'application#app'
   get 'admin/lib.js' => 'application#lib'
