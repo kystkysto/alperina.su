@@ -7,24 +7,28 @@
 	<div class="list" ng-if="MaterialList.materials.length">
 		<article class="list-item" data-ng-repeat="material in MaterialList.materials">
 			<header class="list-item-title">
-				<h2><a data-ng-href="{{MaterialList.path}}/{{material.id}}">{{material.title}}</a></h2>
+				<h2><a data-ng-href="{{MaterialList.path}}/{{material.material.id}}">{{material.material.title}}</a></h2>
 			</header>
 			<div class="list-item-text">
-				<p data-ng-bind="material.text">
-					<span><a data-ng-href="{{MaterialList.path}}/{{material.id}}">читать дальше.</a></span>
+				<p data-ng-bind="material.material.text">
+					<span><a data-ng-href="{{MaterialList.path}}/{{material.material.id}}">читать дальше.</a></span>
 				</p>
 			</div>
 			<div class="col-md-9">
 				<div class="tags-wrapper" data-ng-if="MaterialList.showTags">
 					<span class="label">тэги:</span>
 					<div class="tags">
-						<a data-ng-repeat="tag in material.tags" data-ng-href="/articles/persons?tag={{tag.name}}" class="tag"><span>{{tag.alias}}</span></a>
+						<a data-ng-repeat="tag in material.tags" data-ng-href="/articles/persons?tag={{tag.alias}}" class="tag"><span>{{tag.name}}</span></a>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div class="date">{{material.published | date:'dd.MM.yyyy'}}</div>
+				<div class="date">{{material.material.published | date:'dd.MM.yyyy'}}</div>
 			</div>
 		</article>
+		<div class="load-more" data-ng-if="MaterialList.showLoadMore">
+			<p class="load-more__text"
+				data-ng-click="MaterialList.loadMore()">Показать ещё</p>
+		</div>
 	</div>
 </div>

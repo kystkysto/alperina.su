@@ -1,6 +1,6 @@
 angular.module('admin')
 
-    .controller('MaterialController', function($scope, $routeParams, $location, $log, Material) {
+    .controller('MaterialController', function($scope, $routeParams, $location, $log, growl, Material) {
         
         $log.info('MaterialController');
 
@@ -33,6 +33,19 @@ angular.module('admin')
             $log.info('Modal dismissed at: ' + new Date());
         });
         */
+        $scope.deleteMaterial = function deleteMaterial() {
+            Material.delete({id:$scope.material.id}, function(res) {
+                    growl.addSuccessMessage('Материал удалён', {ttl: 2000});
+
+                    $scope.material.id = null;
+                    setTimeout(function() {
+                        $location.path('/admin/materials');
+                    }, 1000);
+                }, function(res) {
+                    growl.addErrorMessage('Ошибка при удалении', {ttl: 2000});
+                });
+
+        };
 
         $scope.saveMaterial = function saveMaterial() {
 
@@ -47,15 +60,23 @@ angular.module('admin')
 
             if($scope.material.id) {
 
-                Material.update({id:$scope.material.id}, {material: material}, function(material) {
-                    material.published = new Date(material.published);
-                    $scope.material = material;
-                });
+                Material.update({id:$scope.material.id}, {material: material},
+                    function(material) {
+                        material.published = new Date(material.published);
+                        $scope.material = material;
+                        growl.addSuccessMessage('Материал сохранён', {ttl: 2000});
+                    }, function(res) {
+                        growl.addErrorMessage('Произошла ошибка', {ttl: 2000});
+                    });
             } else {
+
                 Material.save({material: material}, function(material) {
                     material.published = new Date(material.published);
                     $scope.material = material;
                     $location.path('/material/' + material.id);
+                    growl.addSuccessMessage('Материал добавлен', {ttl: 2000});
+                }, function(res) {
+                    growl.addErrorMessage('Произошла ошибка', {ttl: 2000});
                 });
             }
             //$scope.materialChanged = false;

@@ -249,6 +249,10 @@ input#user_remember_me {
     }
 }
 
+.growl {
+    z-index: 9999;
+}
+
 .video  {
 
     &__input {
@@ -263,10 +267,12 @@ input#user_remember_me {
         border: 5px dashed gray;
         //padding: 5% auto;
         height: 100%;
+        width: 100%;
 
         &__text {
             width: 50%;
             margin: 0 auto;
+            width: 160px;
         }
     }
 }
@@ -284,6 +290,14 @@ input#user_remember_me {
     &__label {
         margin: 20px 0;
     }*/
+}
+
+.pagination {
+
+    li {
+
+        cursor: pointer;
+    }
 }
 
 .ta-scroll-window>.ta-bind {
@@ -315,6 +329,7 @@ input#user_remember_me {
         top: -9999px;
         &_show {
             position: relative;
+            margin-bottom: 100%;
         }
     }
 }

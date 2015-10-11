@@ -60,6 +60,12 @@ class PhotoController < ApplicationController
     end
   end
 
+  def window
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def list
     respond_to do |format|
       format.html

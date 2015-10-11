@@ -11,7 +11,8 @@ angular.module('admin', [
         'ngResource',
         'textAngular',
         'ui.bootstrap',
-        'ngFileUpload'
+        'ngFileUpload',
+        'angular-growl'
     ])
 
 .config(function($routeProvider, $locationProvider, $provide) {

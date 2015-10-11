@@ -5,9 +5,14 @@
         </svg>
     </div>
 	<ul class="photos-list" ng-if="Photos.photos.length">
+        <div ng-show="Photos.overlay"
+            class="photos-list__overlay"
+            ng-click="Photos.deselectPhoto()"></div>
 		<li class="photos-item"
-			ng-repeat="photo in Photos.photos">
-			<figure class="photo">
+			ng-repeat="photo in Photos.photos"
+            ng-class="photo.selected ? 'photos-item_selected' : ''">
+			<figure class="photo"
+                ng-click="Photos.selectPhoto($index)">
 				<img ng-src="/img/photos/{{photo.path}}" alt="img01">
 				<figcaption><p>{{photo.description}}</p></figcaption>
 			</figure>

@@ -3,5 +3,6 @@
     ng-click="closeWindow()">X</div>
 <div
     class="photos-window"
+    ng-init="init('material')"
     ng-controller="PhotosController"
-    ng-include="'/api/photo/list.html'"></div>
+    ng-include="'/api/photo/window.html'"></div>

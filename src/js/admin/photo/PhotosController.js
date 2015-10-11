@@ -1,7 +1,31 @@
 angular.module('admin')
 
-    .controller('PhotosController', function($rootScope, $scope, $http, $routeParams, $timeout, Upload, Photo) {
+    .controller('PhotosController', function($rootScope, $scope, $http, $routeParams, $timeout, growl, Upload, Photo) {
         console.log('PhotosController');
+
+        $scope.fullList = [];
+
+        $scope.pages = [];
+
+        $scope.init = function init(rubric) {
+            
+            Photo.query({rubric: rubric}, function(list) {
+                paginate(list);
+            });
+        };
+
+        $scope.changePage = function changePage(page) {
+            if(page === 1) {
+
+                $scope.list = $scope.fullList.slice(0, 11);
+            } else {
+
+                var tok = page * 10,
+                    from = tok - 10 + 1,
+                    to = tok + 1;
+                $scope.list = $scope.fullList.slice(from, to);
+            }
+        };
 
         $scope.clearPhoto = function clearPhoto() {
             
@@ -45,10 +69,18 @@ angular.module('admin')
 
         ];
 
-
         $scope.list = Photo.query({rubric: $scope.rubric}, function(list) {
             /*console.log(list);*/
+            paginate(list);
         });
+
+        function paginate(list) {
+            $scope.fullList = list;
+            var length = Math.ceil($scope.fullList.length / 10),
+                i = 1;
+            $scope.pages = Array.apply(null, Array(length)).map(function() { return i++; });
+            $scope.list = $scope.fullList.slice(0,11);
+        }
 
         $scope.$watch(function() {
             return $scope.photo;
@@ -80,15 +112,16 @@ angular.module('admin')
                     data: {
                         photo: photo
                     }
-                })
-                .progress(function (evt) {
-
+                }).then(function (resp) {
+                
+                    $scope.list.unshift(resp.data);
+                    growl.addSuccessMessage('Фото добавлено', {ttl: 2000});
+                }, function (resp) {
+                    growl.addErrorMessage('Произошла ошибка', {ttl: 2000});
+                }, function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     $scope.progressWidth = {width: progressPercentage + '% '};
                     console.log('progress: ' + progressPercentage + '% ');
-                })
-                .success(function (data, status, headers, config) {
-                    $scope.list.unshift(data);
                 });
             }
         };

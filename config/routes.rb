@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'photo/list' => 'photo#list'
     get 'photo/list' => 'photo#list'
     get 'photo/overlay' => 'photo#overlay'
+    get 'photo/window' => 'photo#window'
     get 'video/list' => 'video#list'
     get 'video/edit' => 'video#edit'
     get 'tag/list' => 'tag#list'

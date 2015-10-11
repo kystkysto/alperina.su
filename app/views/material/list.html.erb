@@ -29,15 +29,31 @@
             </h1>
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-hide="list.length">
+        <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+            <h1>Загружается...</h1>
+        </div>
+        <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
+        </div>
+        </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 img"
         ng-repeat="material in list"
-        ng-controller="PhotoController">
+        ng-controller="PhotoController"
+        ng-show="list.length">
         <div class="material well">
             <div class="material__header"></div>
-                <h2><a ng-href="material/{{material.id}}" class="material__title">{{material.title}}</a></h2>
-                <p class="material__description">{{material.text}}</p>
-                <div class="material__published">{{material.published | date:'dd.MM.yyyy'}}</div>
-            </div>
+                <h2><a ng-href="material/{{material.material.id}}" class="material__title">{{material.material.title}}</a></h2>
+                <p class="material__description">{{material.material.text}}</p>
+            <div class="material__published">{{material.material.published | date:'dd.MM.yyyy'}}</div>
         </div>
+    </div>
+</div> 
+<div class="row" ng-if="pages.length > 1">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <ul class="pagination">
+            <li ng-repeat="page in pages"><a ng-click="changePage(page)">{{page}}</a></li>
+        </ul>
     </div>
 </div>

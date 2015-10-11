@@ -4,10 +4,11 @@ var gulp = require('gulp'),
 	less = require('gulp-less'),
 	minify = require('gulp-minify-css'),
 	print = require('gulp-print'),
-	ngAnnotate = require('gulp-ng-annotate');
+	ngAnnotate = require('gulp-ng-annotate'),
+	sourcemaps = require('gulp-sourcemaps');
 //	mainBowerFiles = require('main-bower-files');
 
-gulp.task('default', ['css', 'js', 'img', 'admin_lib', 'admin_js', 'admin_css', 'watch'], function(){
+gulp.task('default', ['css', 'lib', 'js', 'img', 'admin_lib', 'admin_js', 'admin_css', 'watch'], function(){
 
 });
 
@@ -86,10 +87,12 @@ gulp.task('js', function () {
 	return gulp.src([
 		'src/js/app/**/*.js'
 	])
+		.pipe(sourcemaps.init())
 		.pipe(print())
 		.pipe(ngAnnotate())
 		.pipe(concat('app.js'))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest('public/js'));
 });
 
@@ -107,6 +110,7 @@ gulp.task('admin_lib', function () {
 		'bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'bower_components/textAngular/dist/textAngular.min.js',
 		'bower_components/textAngular/dist/textAngular-rangy.min.js',
+		'bower_components/angular-growl/build/angular-growl.min.js'
 	])
 		.pipe(print())
 		.pipe(concat('lib.js.erb'))
@@ -118,10 +122,12 @@ gulp.task('admin_js', function () {
 	return gulp.src([
 		'src/js/admin/**/*.js'
 	])
+		.pipe(sourcemaps.init())
 		.pipe(print())
 		.pipe(ngAnnotate())
 		.pipe(concat('app.js.erb'))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('./maps'))
 		.pipe(gulp.dest('app/views/aplication/'));
 });
 
@@ -130,6 +136,7 @@ gulp.task('admin_css', function () {
 	return gulp.src([
 		'bower_components/bootstrap/dist/css/bootstrap.min.css',
 		'bower_components/textAngular/dist/textAngular.css',
+		'bower_components/angular-growl/build/angular-growl.min.css',
 		'src/css/admin/**/*.less',
 	])
 		.pipe(print())

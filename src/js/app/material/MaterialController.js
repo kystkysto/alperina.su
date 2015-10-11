@@ -12,6 +12,7 @@
 		$http.get('/api/material/' + $routeParams.id).then(function(data) {
 			console.log(data.data);
 			self.material = data.data.material;
+			self.tags = data.data.tags;
 			Header.setTitle(self.material.title);
 		});
 		/*,
