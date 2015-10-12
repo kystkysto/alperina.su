@@ -52,10 +52,10 @@ class MaterialController < ApplicationController
       offset = params[:after]
     end
 
-    if params[:rubric] && params[:rubric] != 'all'
+    if params.has_key?(:rubric) && params[:rubric] != 'all' && !params[:tag]
       @materials = Material.eager_load(:tags).where(rubric: params[:rubric]).order(published: :desc).limit(limit).offset(offset).to_a
     elsif params[:rubric] == 'persons' && params[:tag]
-      @materials = Material.joins(:tags).where('tags.name' => params[:tag]).order(published: :desc).limit(limit).offset(offset).to_a
+      @materials = Material.joins(:tags).where('tags.alias' => params[:tag]).order(published: :desc).limit(limit).offset(offset)
     else
       @materials = Material.eager_load(:tags).order(published: :desc).limit(limit).offset(offset).to_a
     end

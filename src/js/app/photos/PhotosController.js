@@ -25,6 +25,15 @@ function PhotosController($http, $routeParams) {
         this.overlay = true;
     };
 
+    this.touglePhoto = function touglePhoto($index) {
+
+        if(selectedPhoto !== null) {
+            this.deselectPhoto();
+        } else {
+            this.selectPhoto($index);
+        }
+    };
+
     $http.get('/api/photo/?rubric=' + rubric).then(function(list) {
 
         this.photos = list.data;
