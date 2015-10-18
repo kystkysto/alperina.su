@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     get 'photo/window' => 'photo#window'
     get 'video/list' => 'video#list'
     get 'video/edit' => 'video#edit'
-    get 'tag/list' => 'tag#list'
-    get 'tag/list' => 'tag#list'
-    resources :feedback, :video, :home, :photo, :tag, :material, shallow: true #, only: [:index, :show, :create, :update, :destroy]
+    get 'quotes/list' => 'quotes#list'
+    get 'quotes/edit' => 'quotes#edit'
+    resources :feedback, :video, :home, :photo, :tag, :material, :quotes, shallow: true #, only: [:index, :show, :create, :update, :destroy]
   end
 
   get 'admin' => 'application#index'

@@ -153,22 +153,43 @@ header {
 	z-index: 1;
 }
 
-.quote h2:before {
-    content: '';
-    position: absolute;
-    background: url(/img/quotes2.png) 0 0 no-repeat;
-    width: 100px;
-    height: 100px;
-    z-index: -1;
-    background-size: 100px;
-    top: 30px;
-    left: 0px;
-}
 
-.quote h2 {
-	text-align: right;
-	color: #fff;
-	font-family: SI;
+
+.quote {
+
+    -webkit-transition: all 1s cubic-bezier(0.4, 1, 0.2, 1);
+    transition: all 1s cubic-bezier(0.4, 1, 0.2, 1);
+
+    &_hide {
+        opacity: 0;
+    }
+
+    &_show {
+        opacity: 1;
+    }
+
+    div:before {
+        content: '';
+        position: absolute;
+        background: url(/img/quotes2.png) 0 0 no-repeat;
+        width: 100px;
+        height: 100px;
+        z-index: -1;
+        background-size: 100px;
+        top: 30px;
+        left: 0px;
+    }
+
+    div {
+    	p {
+            font-size: 20px;
+            text-align: right;
+        	color: #fff;
+        	font-family: SI;
+            margin: 0;
+        }
+
+    }
 }
 
 nav > .nav:after {
@@ -195,6 +216,22 @@ nav > .nav:after {
 }
 
 .menu {
+
+    &_animated {
+
+        &-container {
+            
+        }
+
+        .ng-enter {
+            opacity:0;
+        }
+
+        .ng-enter.ng-enter-active {
+            opacity:1;
+        }
+    }
+
 	bottom: 0;
 	height: 100%;
 	position:fixed;
@@ -206,6 +243,12 @@ nav > .nav:after {
     overflow-y: scroll;
     -ms-overflow-style: none;
     .shadow-2;
+}
+
+@-moz-document url-prefix() {
+    .menu {
+        overflow-y: hidden;
+    }
 }
 
 .menu::-webkit-scrollbar {
@@ -672,19 +715,29 @@ nav > .nav:after {
 	}
 
 	.photos-item {
+
 		display: inline-block;
 		cursor: pointer;
 		margin-bottom: 15px;
 		padding: 0 7.5px;
-		transition: all .5s cubic-bezier(.4,1,.2,1);
+		/*transition: all .5s cubic-bezier(.4,1,.2,1);*/
+        max-width: 100%;
 
 		&_selected {
-			padding: 0;
+			
+            padding: 0;
 		    position: fixed;
 		    z-index: 5;
-		    top: 50%;
-    		left: 50%;
-		    transform: translateY(-50%) translateX(-50%);
+            top: 50%;
+            left: 50%;
+            max-height: 50%;
+            width: auto;
+            height: auto;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -ms-transform: translateX(-50%) translateY(-50%);
+            -o-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
 
 		    .photo {
 		    	background: #fff;

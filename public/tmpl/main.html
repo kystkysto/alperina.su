@@ -1,0 +1,25 @@
+<main class="col-md-9 col-md-offset-3 main">
+    <div class="hamburger" data-ng-click="body.showMenu()">
+
+    </div>
+    <header class="row header" data-ng-controller="HeaderContrller as Header">
+        <div class="col-xs-10 col-xs-offset-1 pull-front">
+
+            <div class="quote" data-ng-if="Header.quote" data-ng-class="quoteClass">
+                <h2 data-ng-bind-html="Header.quote"></h2>                              
+            </div>
+            <div class="title" data-ng-if="Header.title">
+                <h1 ng-bind="Header.title"></h1>
+            </div>
+            <div class="tags-wrapper" data-ng-if="Header.showTags">
+                <span class="label">тэги:</span>
+                <div class="tags">
+                    <a data-ng-href="/articles/persons?tag={{tag.name}}" class="tag" data-ng-repeat="tag in Header.tags"><span ng-bind="tag.alias"></span></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="row content">
+        <data-ng-view></data-ng-view>
+    </section>  
+</main> 

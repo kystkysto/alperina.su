@@ -8,7 +8,7 @@ class MaterialController < ApplicationController
 
     @tags = params[:material][:tags]
 
-    if @tags.length > 0
+    if @tags
       @tags.each do |k,v|
         @material.tags << Tag.find(k[:id])
       end

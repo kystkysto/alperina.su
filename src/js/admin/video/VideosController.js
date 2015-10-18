@@ -34,12 +34,16 @@ angular.module('admin')
 
         $scope.videoRubrics = [
             {
-                name: 'Свои',
+                name: 'САНолюбование',
                 value: 'self'
             },
             {
-                name: 'Другие',
+                name: 'КлипС.А.',
                 value: 'other'
+            },
+            {
+                name: 'Клуб одесситов',
+                value: 'club'
             },
 
         ];

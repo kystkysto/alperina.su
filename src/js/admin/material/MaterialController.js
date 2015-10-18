@@ -1,7 +1,26 @@
 angular.module('admin')
 
+.directive("csDateToIso", function () {
+
+    var linkFunction = function (scope, element, attrs, ngModelCtrl) {
+
+        ngModelCtrl.$parsers.push(function (datepickerValue) {
+            return moment(datepickerValue).format("YYYY-MM-DD");
+        });
+    };
+    
+
+    return {
+        restrict: "A",
+        require: "ngModel",
+        link: linkFunction
+    };
+})
+
     .controller('MaterialController', function($scope, $routeParams, $location, $log, growl, Material) {
         
+        $scope.material = {};
+
         $log.info('MaterialController');
 
         $scope.showPhotosWindow = false;
@@ -18,6 +37,8 @@ angular.module('admin')
                 $scope.selectedTags = data.tags;
                 $scope.material = data.material;
             });
+        } else {
+            $scope.material.published = new Date();
         }
 
         /*var modalInstance = $modal.open({
@@ -39,7 +60,7 @@ angular.module('admin')
 
                     $scope.material.id = null;
                     setTimeout(function() {
-                        $location.path('/admin/materials');
+                        $location.path('/materials');
                     }, 1000);
                 }, function(res) {
                     growl.addErrorMessage('Ошибка при удалении', {ttl: 2000});
@@ -62,7 +83,7 @@ angular.module('admin')
 
                 Material.update({id:$scope.material.id}, {material: material},
                     function(material) {
-                        material.published = new Date(material.published);
+                        material.published = new Date(material.published);//new Date(material.published);
                         $scope.material = material;
                         growl.addSuccessMessage('Материал сохранён', {ttl: 2000});
                     }, function(res) {
@@ -129,21 +150,48 @@ angular.module('admin')
         ];
 
         $scope.materialTags = [
-            {
-                id: 1,
-                name: 'Звёзды',
-                alias: 'celebrity'
-            },
-            {
-                id: 2,
-                name: 'Актёры',
-                alias: 'actors'
-            },
-            {
-                id: 3,
-                name: 'Режисёры',
-                alias: 'Directors'
-            }
+          {
+            "id": 1,
+            "name": "Звёзды",
+            "created_at": "2015-09-27T10:00:25.642Z",
+            "updated_at": "2015-09-28T19:59:55.681Z",
+            "alias": "celebrity"
+          },
+          {
+            "id": 2,
+            "name": "Режисеры",
+            "created_at": "2015-10-04T17:19:17.065Z",
+            "updated_at": "2015-10-04T17:19:17.065Z",
+            "alias": "directors"
+          },
+          {
+            "id": 3,
+            "name": "Актёры",
+            "created_at": "2015-10-04T17:19:35.249Z",
+            "updated_at": "2015-10-04T17:19:35.249Z",
+            "alias": "actors"
+          },
+          {
+            "id": 4,
+            "name": "Продюсеры",
+            "created_at": "2015-10-04T17:20:21.887Z",
+            "updated_at": "2015-10-04T17:20:21.887Z",
+            "alias": "producers"
+          },
+          {
+            "id": 5,
+            "name": "Писатели",
+            "created_at": "2015-10-04T17:20:35.006Z",
+            "updated_at": "2015-10-04T17:20:35.006Z",
+            "alias": "writers"
+          },
+          {
+            "id": 6,
+            "name": "Шоу-бизнес",
+            "created_at": "2015-10-04T17:20:51.705Z",
+            "updated_at": "2015-10-04T17:20:51.705Z",
+            "alias": "show_business"
+          }
         ];
 
 

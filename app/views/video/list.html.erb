@@ -9,8 +9,9 @@
 
             <ul class="nav navbar-nav">
                 <li class="active"><a href="videos/all">Все</a></li>
-                <li><a href="videos/self">Свои</a></li>
-                <li><a href="videos/other">Другие</a></li>
+                <li><a href="videos/self">САНолюбование</a></li>
+                <li><a href="videos/other">КлипС.А.</a></li>
+                <li><a href="videos/club">Клуб одесситов</a></li>
             </ul>
         </nav>
         <div class="progress">
@@ -52,11 +53,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-warning"
+                        ng-click="clearVideo()">Сбросить</button></div>
                     <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-default"
                         ng-disabled="!videoChanged"
                         ng-click="saveVideo()">Сохранить</button></div>
-                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-warning"
-                        ng-click="clearVideo()">Сбросить</button></div>
                 </div>
             </div>
         </div>
@@ -86,11 +87,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-danger"
+                        ng-click="deleteVideo($index)">Удалить</button></div>
                     <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-default"
                         ng-disabled="!videoChanged"
                         ng-click="saveVideo()">Сохранить</button></div>
-                    <div class="col-xs-6"><button class="form-control video-actoin__button btn btn-danger"
-                        ng-click="deleteVideo($index)">Удалить</button></div>
                 </div>
             </div>
         </div>

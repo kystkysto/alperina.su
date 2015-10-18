@@ -5,6 +5,7 @@
 	angular.module('Alperina',[
 		'ngRoute',
 		'ngSanitize',
+		'ngAnimate',
 		'youtube-embed',
 		'Alperina.controllers',
 		'Alperina.services'

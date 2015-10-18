@@ -14,6 +14,10 @@ angular.module('admin')
             });
         };
 
+        $scope.changeRubric = function changeRubric(rubric) {
+            $scope.init(rubric);
+        };
+
         $scope.changePage = function changePage(page) {
             if(page === 1) {
 

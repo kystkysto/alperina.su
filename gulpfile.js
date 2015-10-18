@@ -71,9 +71,10 @@ gulp.task('lib', function () {
 	return gulp.src([
 		'bower_components/jquery/dist/jquery.min.js',
 		//'bower_components/bootstrap/js/*.js',
-		'bower_components/angular/**/*.min.js',
-		'bower_components/angular-route/**/*.min.js',
-		'bower_components/angular-sanitize/**/*.min.js',
+		'bower_components/angular/angular.min.js',
+		'bower_components/angular-route/angular-route.min.js',
+		'bower_components/angular-sanitize/angular-sanitize.min.js',
+		'bower_components/angular-animate/angular-animate.min.js',
 		'bower_components/angular-bootstrap/ui-bootstrap.min.js',
 		'bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js'
 	])
@@ -110,7 +111,8 @@ gulp.task('admin_lib', function () {
 		'bower_components/textAngular/dist/textAngular-sanitize.min.js',
 		'bower_components/textAngular/dist/textAngular.min.js',
 		'bower_components/textAngular/dist/textAngular-rangy.min.js',
-		'bower_components/angular-growl/build/angular-growl.min.js'
+		'bower_components/angular-growl/build/angular-growl.min.js',
+		'bower_components/moment/min/moment-with-locales.min.js'
 	])
 		.pipe(print())
 		.pipe(concat('lib.js.erb'))

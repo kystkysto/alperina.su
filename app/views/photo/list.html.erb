@@ -9,9 +9,9 @@
 
             <ul class="nav navbar-nav">
                 <li class="active"><a href="photos/all">Все</a></li>
-                <li><a href="photos/self">Свои</a></li>
-                <li><a href="photos/other">Другие</a></li>
-                <li><a href="photos/photos">Клуб</a></li>
+                <li><a href="photos/self">САНолюбование</a></li>
+                <li><a href="photos/other">САН техника</a></li>
+                <li><a href="photos/photos">Клуб одесситов</a></li>
                 <li><a href="photos/material">Материалы</a></li>
             </ul>
         </nav>
@@ -69,11 +69,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-warning"
+                        ng-click="clearPhoto()">Сбросить</button></div>
                     <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-default"
                         ng-disabled="!photoChanged"
                         ng-click="savePhoto()">Сохранить</button></div>
-                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-warning"
-                        ng-click="clearPhoto()">Сбросить</button></div>
                 </div>
             </div>
         </div>
@@ -105,11 +105,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-danger"
+                        ng-click="deletePhoto($index)">Удалить</button></div>
                     <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-default"
                         ng-disabled="!photoChanged"
                         ng-click="savePhoto()">Сохранить</button></div>
-                    <div class="col-xs-6"><button class="form-control img-actoin__button btn btn-danger"
-                        ng-click="deletePhoto($index)">Удалить</button></div>
                 </div>
             </div>
         </div>

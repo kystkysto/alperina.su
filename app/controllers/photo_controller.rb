@@ -41,10 +41,21 @@ class PhotoController < ApplicationController
   end
 
   def index
+
+    limit = 11
+    offset = 0
+    materials = []
+    
+    if params[:after] === 'infinity'
+      limit = 10000
+    elsif params[:after]
+      offset = params[:after]
+    end
+
     if params[:rubric] && params[:rubric] != 'all'
-      @photos = Photo.where(rubric: params[:rubric]).order(created_at: :desc)
+      @photos = Photo.where(rubric: params[:rubric]).order(created_at: :desc).limit(limit).offset(offset)
     else
-      @photos = Photo.all.order(created_at: :desc)
+      @photos = Photo.all.order(created_at: :desc).limit(limit).offset(offset)
     end
     render :json => @photos
   end

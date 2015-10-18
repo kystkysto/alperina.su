@@ -65,7 +65,7 @@
 		function setQuote(quote) {
 			self.quote = quote;
 			self.title = null;
-			console.log(self.quote);
+//			console.log(self.quote);
 			return self.notifyObservers();
 		}
 
@@ -90,7 +90,7 @@
 		//register an observer
 		function registerObserverCallback(callback){
 			observerCallbacks.push(callback);
-		};
+		}
 
 		//call this when you know 'foo' has been changed
 		function notifyObservers(){
@@ -99,7 +99,7 @@
 			});
 
 			return self;
-		};
+		}
 	}
 
 })();
