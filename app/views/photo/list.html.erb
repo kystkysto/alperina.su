@@ -20,7 +20,7 @@
         </div>
     </div>
 </div>
-<div class="row" ng-hide="list.length">
+<!-- <div class="row" ng-hide="list.length">
     <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -28,8 +28,8 @@
     </div>
     <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
     </div>
-</div>
-<div class="row" ng-show="list.length">
+</div> -->
+<div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 img-uploader">
         <div class="img well">
 
@@ -80,7 +80,8 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3"
         ng-repeat="photo in list"
-        ng-controller="PhotoController">
+        ng-controller="PhotoController"
+         ng-show="list.length">
         <div class="img well">
 
             <figure class="figure">
