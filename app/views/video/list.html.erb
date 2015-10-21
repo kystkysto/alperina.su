@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-<div class="row" ng-hide="list.length">
+<!-- <div class="row" ng-hide="list.length">
     <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
     </div>
     <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
@@ -27,8 +27,8 @@
     </div>
     <div class="col-xs-0 col-sm-0 col-md-4 col-lg-4">
     </div>
-</div>
-<div class="row" ng-show="list.length">
+</div> -->
+<div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 video-uploader">
         <div class="video well">
 
@@ -64,7 +64,8 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4"
         ng-repeat="video in list"
-        ng-controller="VideoController">
+        ng-controller="VideoController"
+        ng-show="list.length">
         <div class="video well">
 
             <div>

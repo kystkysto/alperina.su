@@ -5,8 +5,72 @@ var gulp = require('gulp'),
 	minify = require('gulp-minify-css'),
 	print = require('gulp-print'),
 	ngAnnotate = require('gulp-ng-annotate'),
-	sourcemaps = require('gulp-sourcemaps');
+	sourcemaps = require('gulp-sourcemaps'),
+	gulpFromConfig = require('gulp-from-config');
 //	mainBowerFiles = require('main-bower-files');
+
+	var tasks = []; // declare tasks list array 
+	 
+	 
+	    /**
+	     *  Or define config
+	     */
+	    var task = {
+	        name: "styles", // module task name 
+	            subTasks: [
+	                {
+	                    name: "less", // technical task name 
+	                    dest: "/tmp/css", // path to build 
+	                    sourcemaps: true, // enable sourcemaps 
+	                    src: {
+	                        include: [
+	                            "/src/sass/*.less" // files to proceed 
+	                        ],
+	                        exclude: [
+	                            "/src/sass/_*.less" // files to ignore 
+	                        ]
+	                    },
+	                    plugins: [
+	                        {
+	                            "name": "gulp-less", // gulp-sass plugin 
+	                            "options": {
+	                                "outputStyle": "compressed" // will be passed to plugin parameter 
+	                            }
+	                        }
+	                    ]
+	                }
+	            ]
+	    };
+	 
+	    /**
+	     *  And pass it as Array to setConfigs function
+	     */
+	    gulpFromConfig.setConfigs([task]);
+	 
+	    /**
+	     *  Callback function can be triggered on completion of subtasks
+	     *  Sub task config is passed as parameter
+	     */
+	    var callback = function(config) {
+	        console.log('Sub task config:', config);
+	    };
+
+	    gulpFromConfig.setCallback(callback);
+	 
+	    /**
+	     *  Define tasks based on configs
+	     *  Run like normal gulp task 'gulp styles'
+	     */
+	    tasks = gulpFromConfig.createTasks(gulp);
+	 
+	    /**
+	     *  Or if you need to run all of them
+	     *  pass tasks array to default task
+	     *  and run 'gulp'
+	     */
+	    gulp.task('from', tasks, function() {
+	        console.log('All tasks are done!');
+	    });
 
 gulp.task('default', ['css', 'lib', 'js', 'img', 'admin_lib', 'admin_js', 'admin_css', 'watch'], function(){
 
