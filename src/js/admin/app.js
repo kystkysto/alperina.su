@@ -124,6 +124,16 @@ angular.module('admin', [
            controller: 'VideosController',
            controllerAs: 'videos'
        })
+       .when('/quotes', {
+           templateUrl: '/api/quotes/list.html',
+           controller: 'QuotesController',
+           controllerAs: 'quotes'
+       })
+       .when('/main', {
+           templateUrl: '/api/main/edit.html',
+           controller: 'MainController',
+           controllerAs: 'main'
+       })
        .when('/videos/:rubric', {
            templateUrl: '/api/video/list.html',
            controller: 'VideosController',

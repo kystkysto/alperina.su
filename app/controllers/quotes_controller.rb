@@ -1,10 +1,14 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  respond_to :json
+  skip_before_filter :verify_authenticity_token
+  before_action :authenticate_user!, :except => [:index, :show, :update, :create, :destroy, :edit, :list]
+  before_action :set_quote, only: [:show, :update, :destroy]
 
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.all
+    @quotes = Quote.all.order(created_at: :desc)
+    render :json => @quotes
   end
 
   # GET /quotes/1
@@ -15,21 +19,31 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/edit
   def edit
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def list
+    respond_to do |format|
+      format.html
+    end
   end
 
   # POST /quotes
   # POST /quotes.json
   def create
-    @tag = Tag.new(permit)
-    @tag.save
-    render :json => @tag
+    @quote = Quote.new(permit)
+    @quote.save
+    render :json => @quote
   end
 
   # PATCH/PUT /quotes/1
   # PATCH/PUT /quotes/1.json
   def update
-    @tag = Tag.update(params[:id], permit)
-    render :json => @tag
+    @quote = set_quote
+    @quote.update(permit)
+    render :json => @quote
   end
 
   # DELETE /quotes/1
