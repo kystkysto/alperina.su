@@ -4,10 +4,24 @@ class QuotesController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show, :update, :create, :destroy, :edit, :list]
   before_action :set_quote, only: [:show, :update, :destroy]
 
+  helper ActionView::Helpers::TextHelper
+
   # GET /quotes
   # GET /quotes.json
   def index
     @quotes = Quote.all.order(created_at: :desc)
+
+    @quotes.each do |q|
+      rows = q.content.split(/\n/)
+      
+      content = '';
+
+      rows.each do |r|
+        content += '<p>' + r + '</p>'
+      end
+
+      q.content = content
+    end
     render :json => @quotes
   end
 

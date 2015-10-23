@@ -5,24 +5,19 @@
 	angular.module('Alperina.controllers')
 		.controller('HeaderContrller', HeaderContrller);
 
-	function HeaderContrller($rootScope, $scope, $location, $interval, $timeout, Header) {
+	function HeaderContrller($rootScope, $scope, $location, $interval, $http, $timeout, Header) {
 
 		var self = this,
 			observers = {
-				updateTitle: function() {
+				update: function() {
 					self.title = Header.title;
-				},
-				updatequote: function() {
 					self.quote = Header.quote;
-				},
-				updateShowTags: function() {
 					self.showTags = Header.showTags;
-				},
-				updateTags: function() {
 					self.tags = Header.tags;
+					self.quotesShown = Header.quotesShown;
 				}
 			},
-			method = null,
+			method = null;/*,
 			quotes = [
 				{
 					id: 1,
@@ -32,7 +27,7 @@
 					id: 2,
 					content: '<p>Тест,</p><p>И музыки немного,</p><p>Чуть чуть</p><p>Ещё</p>'
 				},
-			];
+			];*/
 
 		for (method in observers) {
 			Header.registerObserverCallback(observers[method]);
@@ -47,153 +42,62 @@
 
 		$scope.quoteClass = 'quote_show';
 
-		Header.setQuoteRotation = function() {
-			var list = new  DoublyLinkedList();
+		var List = function List(list) {
 
-			quotes.forEach(function(qoute, i) {
+			var cList = function cList(list) {
+				this.position = 0;
+				this.list = list || [];
+			};
 
-				var node = list.append(qoute.content);
-				if(i === 0) {
-					head = node;
-				}
-			});
+			cList.prototype.next = function next() {
 
-			//var head = list.head();
+				var pos = this.position,
+					ln = this.list.length;
 
-			Header.setQuote(head.data);
+				pos += 1;
+				
+				if(pos >= ln) pos = 0;
+		
+				this.position = pos;
 
-			var nextQoute = head.next;
+				return this.list[pos];
+			};
+
+			cList.prototype.first = function first() {
+				return this.list[0];
+			};
+
+			var ls = new cList(list);
+
+
+			return ls;
+		};
+
+		var setQuoteRotation = function(quotes) {
+			var list = List(quotes);
+
+			Header.setQuote(list.first().content);
 
 			$scope.quoteClass = 'quote_show';
 			$interval(function() {
 
 		    	$scope.quoteClass = 'quote_hide';
-
-		    	console.log('quote_hide');
 	    	
 		    	$timeout(function() {
 			    	
-			    	Header.setQuote(nextQoute.data);
+		    		var nextContent = list.next().content;
+
+			    	Header.setQuote(nextContent);
 			    	$scope.quoteClass = 'quote_show';
-			    	console.log('quote_show');
-			    	nextQoute = nextQoute.next;
+			    	
+			    	nextQoute = nextContent;
 			    }, 2000);
 	    	}, 10000);
 		};
+
+		 $http.get('/api/quotes/').then(function(data) {
+	        //self.main = data.data;
+			setQuoteRotation(data.data);
+	    });
 	}
-
-	/*
-	 * Constructor. Takes no arguments.
-	*/
-
-	  function DoublyLinkedList() {
-	    // pointer to first item
-	    this._head = null;
-	    // pointer to the last item
-	    this._tail = null;
-	    // length of list
-	    this._length = 0;
-	  }
-
-	  // Wraps data in a node object.
-	  DoublyLinkedList.prototype._createNewNode = function (data) {
-	    var node = {
-	      data: data,
-	      next: null,
-	      prev: null
-	    };
-	    return node;
-	  };
-
-	/*
-	 * Appends a node to the end of the list.
-	*/
-	  DoublyLinkedList.prototype.append = function (data) {
-	    var node = this._createNewNode(data);
-
-	    if (this._length === 0) {
-
-	      // first node, so all pointers to this
-	      this._head = node;
-	      this._tail = node;
-	    } else {
-
-	      // put on the tail
-	      this._tail.next = node;
-	      node.prev = this._tail;
-	      this._tail = node;
-	    }
-
-	    // update count
-	    this._length++;
-
-	    return node;
-	  };
-
-	/*
-	 * Prepends a node to the end of the list.
-	*/
-	  DoublyLinkedList.prototype.prepend = function (data) {
-	    var node = this._createNewNode(data);
-
-	    if (this.first === null) {
-
-	      // we are empty, so this is the first node
-	      // use the same logic as append
-	      this.append(data);
-	      return;
-	    } else {
-
-	      // place before head
-	      this._head.prev = node;
-	      node.next = this._head;
-	      this._head = node;
-	    }
-
-	    // update count
-	    this._length++;
-
-	    return node;
-	  };
-
-	/*
-	 * Returns the node at the specified index. The index starts at 0.
-	*/
-	  DoublyLinkedList.prototype.item = function (index) {
-	    if (index >= 0 && index < this._length) {
-	      var node = this._head;
-	      while (index--) {
-	        node = node.next;
-	      }
-	      return node;
-	    }
-	  };
-
-	/*
-	 * Returns the node at the head of the list.
-	*/
-	  DoublyLinkedList.prototype.head = function () {
-	    return this._head;
-	  };
-
-	/*
-	 * Returns the node at the tail of the list.
-	*/
-	  DoublyLinkedList.prototype.tail = function () {
-	    return this._tail;
-	  };
-
-	/*
-	 * Returns the size of the list.
-	*/
-	  DoublyLinkedList.prototype.size = function () {
-	    return this._length;
-	  };
-
-	/*
-	 * Removes the item at the index.
-	*/
-	  DoublyLinkedList.prototype.remove = function (index) {
-	    throw "Not implemented";
-	  };
 })();

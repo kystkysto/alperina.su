@@ -78,8 +78,11 @@
 			var q = $location.search(),
 				path = $location.path();
 
-			Header.setShowTags((path == '/articles/persons'))
+			Header
+				.hideQuotes()
+				.setShowTags((path == '/articles/persons'))
 				.setTitle(self.titles[path]);
+
 			if(!q.hasOwnProperty('tag')) Header.setTags();
 		}
 

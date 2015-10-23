@@ -5,12 +5,11 @@ angular.module('Alperina.controllers')
 
 function HomeController($rootScope, $sce, $http, Header) {
 
-    Header.setQuoteRotation();
+    Header.showQuotes();
 
 	var self = this;
 
     $http.get('/api/main/1').then(function(data) {
-        console.log(data.data);
         self.main = data.data;
     });
 }

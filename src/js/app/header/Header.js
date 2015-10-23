@@ -51,6 +51,8 @@
 
 		self.setTitle = setTitle;
 		self.setQuote = setQuote;
+		self.showQuotes = showQuotes;
+		self.hideQuotes = hideQuotes;
 		self.setShowTags = setShowTags;
 		self.setTags = setTags;
 		self.registerObserverCallback = registerObserverCallback;
@@ -58,19 +60,18 @@
 
 		function setTitle(title) {
 			self.title = title;
-			self.quote = null;
 			return self.notifyObservers();
 		}
 
 		function setQuote(quote) {
 			self.quote = quote;
-			self.title = null;
 //			console.log(self.quote);
 			return self.notifyObservers();
 		}
 
 		function setShowTags(set) {
 			self.showTags = set;
+
 			return self.notifyObservers();
 		}
 
@@ -87,18 +88,27 @@
 			return self.notifyObservers();
 		}
 
-		//register an observer
 		function registerObserverCallback(callback){
 			observerCallbacks.push(callback);
 		}
 
-		//call this when you know 'foo' has been changed
 		function notifyObservers(){
 			angular.forEach(observerCallbacks, function(callback){
 				callback();
 			});
 
 			return self;
+		}
+
+		function showQuotes() {
+			self.title = null;
+			self.quotesShown = true;
+			return self.notifyObservers();
+		}
+
+		function hideQuotes() {
+			self.quotesShown = false;
+			return self.notifyObservers();
 		}
 	}
 
