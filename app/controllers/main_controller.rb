@@ -1,7 +1,11 @@
 class MainController < ApplicationController
   respond_to :json
-  skip_before_filter :verify_authenticity_token
-  before_action :authenticate_user!, :except => [:index, :show, :update, :create, :destroy, :new]
+  #skip_before_filter :verify_authenticity_token
+  before_action :authenticate_user!, :except => [:index, :show] #:update, :create, :destroy, :new]
+
+  def index
+    render file: Rails.public_path + 'index.html'
+  end
 
   def create
     @main = Main.new(permit)
